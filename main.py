@@ -47,8 +47,8 @@ def one_hot_encoder(df, nan_as_category = True):
 # Preprocess application_train.csv and application_test.csv
 def application_train_test(num_rows = None, nan_as_category = False):
     # Read data and merge
-    df = pd.read_csv('../input/application_train.csv', nrows= num_rows)
-    test_df = pd.read_csv('../input/application_test.csv', nrows= num_rows)
+    df = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/application_train.csv', nrows= num_rows)
+    test_df = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/application_test.csv', nrows= num_rows)
     print("Train samples: {}, test samples: {}".format(len(df), len(test_df)))
     df = df.append(test_df).reset_index()
     # Optional: Remove 4 applications with XNA CODE_GENDER (train set)
@@ -74,8 +74,8 @@ def application_train_test(num_rows = None, nan_as_category = False):
 
 # Preprocess bureau.csv and bureau_balance.csv
 def bureau_and_balance(num_rows = None, nan_as_category = True):
-    bureau = pd.read_csv('../input/bureau.csv', nrows = num_rows)
-    bb = pd.read_csv('../input/bureau_balance.csv', nrows = num_rows)
+    bureau = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/bureau.csv', nrows = num_rows)
+    bb = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/bureau_balance.csv', nrows = num_rows)
     bb, bb_cat = one_hot_encoder(bb, nan_as_category)
     bureau, bureau_cat = one_hot_encoder(bureau, nan_as_category)
     
@@ -132,7 +132,7 @@ def bureau_and_balance(num_rows = None, nan_as_category = True):
 
 # Preprocess previous_applications.csv
 def previous_applications(num_rows = None, nan_as_category = True):
-    prev = pd.read_csv('../input/previous_application.csv', nrows = num_rows)
+    prev = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/previous_application.csv', nrows = num_rows)
     prev, cat_cols = one_hot_encoder(prev, nan_as_category= True)
     # Days 365.243 values -> nan
     prev['DAYS_FIRST_DRAWING'].replace(365243, np.nan, inplace= True)
@@ -178,7 +178,7 @@ def previous_applications(num_rows = None, nan_as_category = True):
 
 # Preprocess POS_CASH_balance.csv
 def pos_cash(num_rows = None, nan_as_category = True):
-    pos = pd.read_csv('../input/POS_CASH_balance.csv', nrows = num_rows)
+    pos = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/POS_CASH_balance.csv', nrows = num_rows)
     pos, cat_cols = one_hot_encoder(pos, nan_as_category= True)
     # Features
     aggregations = {
@@ -199,7 +199,7 @@ def pos_cash(num_rows = None, nan_as_category = True):
     
 # Preprocess installments_payments.csv
 def installments_payments(num_rows = None, nan_as_category = True):
-    ins = pd.read_csv('../input/installments_payments.csv', nrows = num_rows)
+    ins = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/installments_payments.csv', nrows = num_rows)
     ins, cat_cols = one_hot_encoder(ins, nan_as_category= True)
     # Percentage and difference paid in each installment (amount paid and installment value)
     ins['PAYMENT_PERC'] = ins['AMT_PAYMENT'] / ins['AMT_INSTALMENT']
@@ -232,7 +232,7 @@ def installments_payments(num_rows = None, nan_as_category = True):
 
 # Preprocess credit_card_balance.csv
 def credit_card_balance(num_rows = None, nan_as_category = True):
-    cc = pd.read_csv('../input/credit_card_balance.csv', nrows = num_rows)
+    cc = pd.read_csv('/Users/liaopeng3/logs/HCDR2018_Data/credit_card_balance.csv', nrows = num_rows)
     cc, cat_cols = one_hot_encoder(cc, nan_as_category= True)
     # General aggregations
     cc.drop(['SK_ID_PREV'], axis= 1, inplace = True)
