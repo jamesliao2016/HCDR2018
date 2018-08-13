@@ -116,14 +116,16 @@ def bureau_and_balance(num_rows = None, nan_as_category = True):
     for cat in bureau_cat: cat_aggregations[cat] = ['mean']
     for cat in bb_cat: cat_aggregations[cat + "_MEAN"] = ['mean']
     
-    bureau_agg = bureau.groupby('SK_ID_CURR').agg({**num_aggregations, **cat_aggregations}).reset_index()
+    # bureau_agg = bureau.groupby('SK_ID_CURR').agg({**num_aggregations, **cat_aggregations}).reset_index()
+    bureau_agg = bureau.groupby('SK_ID_CURR').agg({**num_aggregations, **cat_aggregations})
     bureau_agg.columns = pd.Index(['BURO_' + e[0] + "_" + e[1].upper() for e in bureau_agg.columns.tolist()])
     # Bureau: Active credits - using only numerical aggregations
     active = bureau[bureau['CREDIT_ACTIVE_Active'] == 1]
-    active_agg = active.groupby('SK_ID_CURR').agg(num_aggregations).reset_index()
+    # active_agg = active.groupby('SK_ID_CURR').agg(num_aggregations).reset_index()
+    active_agg = active.groupby('SK_ID_CURR').agg(num_aggregations)
     active_agg.columns = pd.Index(['ACTIVE_' + e[0] + "_" + e[1].upper() for e in active_agg.columns.tolist()])
-    active_agg = active_agg.rename(columns = {'ACTIVE_SK_ID_CURR_':'SK_ID_CURR'})
-    bureau_agg = bureau_agg.rename(columns={'BURO_SK_ID_CURR_': 'SK_ID_CURR'})
+    # active_agg = active_agg.rename(columns = {'ACTIVE_SK_ID_CURR_':'SK_ID_CURR'})
+    # bureau_agg = bureau_agg.rename(columns={'BURO_SK_ID_CURR_': 'SK_ID_CURR'})
     bureau_agg = bureau_agg.join(active_agg, how='left', on='SK_ID_CURR')
     del active, active_agg
     gc.collect()
