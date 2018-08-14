@@ -30,8 +30,8 @@ import seaborn as sns
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-# pc_dir = '/Users/jamesliao2018/Downloads/all/'
-pc_dir = '/Users/liaopeng3/logs/HCDR2018_Data/'
+pc_dir = '/Users/jamesliao2018/Downloads/all/'
+# pc_dir = '/Users/liaopeng3/logs/HCDR2018_Data/'
 
 curr_dir = pc_dir
 
