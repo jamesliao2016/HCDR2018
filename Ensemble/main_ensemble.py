@@ -7,7 +7,8 @@ import numpy as np
 
 data = {}
 
-dir1 = '/Users/liaopeng3/code_lib/HCDR2018/Ensemble/'
+# dir1 = '/Users/liaopeng3/code_lib/HCDR2018/Ensemble/'
+dir1 = '/Users/jamesliao2018/GIT/HCDR2018/Ensemble/'
 
 for path in glob.glob(dir1+"homecredt/*.csv", recursive=True):
     data[path[len(dir1) + 10:-4]] = pd.read_csv(path)
