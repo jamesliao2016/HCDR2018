@@ -17,11 +17,18 @@ y = np.array([0, 0, 0, 0, 1, 1, 1, 1])
 floder = KFold(n_splits=4, random_state=0, shuffle=False)
 sfolder = StratifiedKFold(n_splits=4, random_state=0, shuffle=False)
 
-for train, test in sfolder.split(X, y):
-    print('Train: %s | test: %s' % (train, test))
-    print(" ")
-print('#######################')
+# for train, test in sfolder.split(X, y):
+#     print('Train: %s | test: %s' % (train, test))
+#     print(" ")
+# print('#######################')
+#
+# for train, test in floder.split(X, y):
+#     print('Train: %s | test: %s' % (train, test))
+#     print(" ")
 
-for train, test in floder.split(X, y):
+print(sfolder.split(X, y))
+
+for n_fold, (train, test ) in enumerate(floder.split(X, y)):
+    print(n_fold)
     print('Train: %s | test: %s' % (train, test))
     print(" ")
