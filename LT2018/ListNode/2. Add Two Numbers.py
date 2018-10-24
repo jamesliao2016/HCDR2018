@@ -11,23 +11,20 @@ class Solution:
         :type l2: ListNode
         :rtype: ListNode
         """
-        res = n = ListNode(0)
-        val_ca = 0
-        while l1 or l2 or val_ca:
-            v1,v2 = 0,0
+        res = tmp_root = ListNode(0)
+        tmp_ten = 0
+        while l1 or l2 or tmp_ten:
+            tmp_1,tmp_2 = 0,0
             if l1:
-                v1 = l1.val
+                tmp_1 = l1.val
                 l1 = l1.next
             if l2:
-                v2 = l2.val
+                tmp_2 = l2.val
                 l2 = l2.next
-            # print(v1,v2)
-            val_ca,val_tmp = divmod(v1+v2+val_ca,10)
-
-            n.next = ListNode(val_tmp)
-            n = n.next
-        res = res.next
-        return res
+            tmp_ten,tmp_cur = divmod(tmp_ten+tmp_1+tmp_2,10)
+            tmp_root.next = ListNode(tmp_cur)
+            tmp_root = tmp_root.next
+        return res.next
 
 
 
