@@ -6,6 +6,9 @@ class Solution:
         :type height: List[int]
         :rtype: int
         """
+
+
+
         # res = 0
         # for i in range(len(height)-1):
         #     for j in range(i+1,len(height)):
@@ -16,29 +19,29 @@ class Solution:
         # return (res)
 
 
-        opt_i = 0
-        opt_j = 1
-        res = max(0,opt_j - opt_i) * min(height[opt_i],height[opt_j])
-        # for j in range(1,len(height)):
-        j = 1
-        while opt_j<len(height):
-            j = min(len(height)-1,j+1)
-            # forward the first point: i, but keep the second point: j
-            tmp_i = max(0,opt_j - opt_i -1) * min(height[opt_i+1],height[opt_j])
-            # keep the first point i, but forward the second point: j
-            tmp_j = max(0,j - opt_i) * min(height[opt_i],height[j])
-            # forward both i and j
-            tmp_ij = max(0, j - opt_i - 1) * min(height[opt_i+1], height[j])
-            res = max(res,tmp_i,tmp_j,tmp_ij)
-            if res == tmp_i:
-                opt_i += 1
-            elif res==tmp_j:
-                opt_j = j
-            elif res == tmp_ij:
-                opt_i += 1
-                opt_j = j
-        print(opt_i,opt_j)
-        return (res)
+        # opt_i = 0
+        # opt_j = 1
+        # res = max(0,opt_j - opt_i) * min(height[opt_i],height[opt_j])
+        # # for j in range(1,len(height)):
+        # j = 1
+        # while opt_j<len(height):
+        #     j = min(len(height)-1,j+1)
+        #     # forward the first point: i, but keep the second point: j
+        #     tmp_i = max(0,opt_j - opt_i -1) * min(height[opt_i+1],height[opt_j])
+        #     # keep the first point i, but forward the second point: j
+        #     tmp_j = max(0,j - opt_i) * min(height[opt_i],height[j])
+        #     # forward both i and j
+        #     tmp_ij = max(0, j - opt_i - 1) * min(height[opt_i+1], height[j])
+        #     res = max(res,tmp_i,tmp_j,tmp_ij)
+        #     if res == tmp_i:
+        #         opt_i += 1
+        #     elif res==tmp_j:
+        #         opt_j = j
+        #     elif res == tmp_ij:
+        #         opt_i += 1
+        #         opt_j = j
+        # print(opt_i,opt_j)
+        # return (res)
 
 if __name__ == '__main__':
     y = Solution()
