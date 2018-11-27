@@ -14,7 +14,54 @@ class Solution:
         :type root: TreeNode
         :rtype: bool
         """
-        list_left = []
+        def com_two(l,r):
+            if l and r:
+                if l.val == r.val:
+                    com_two(l.left,r.right)
+                    com_two(l.right,r.left)
+                else:
+                    return False
+        if root.left and root.right:
+            com_two(root.left,root.right)
+        return True
+
+
+
+if __name__ == '__main__':
+    # data_input = [1,2,2,3,4,4,3]
+    data_input = [1, 2, 3, 3, 4, 4, 3]
+    # data_tn = TreeNode(data_input[0])
+    # data_input.pop(0)
+    # data_tn.left = TreeNode
+    # print(len(data_input))
+
+    def treefun(x):
+        # print(len(x))
+        root = TreeNode(x[0])
+        front = 0
+        i = 0
+        list_node = [root]
+        while i < len(x)-1:
+            base_node = list_node[front]
+            i += 1
+            front += 1
+            # print(i)
+            base_node.left = TreeNode(x[i])
+            list_node.append(base_node.left)
+
+            i += 1
+            # print(i)
+            base_node.right = TreeNode(x[i])
+            list_node.append(base_node.right)
+        return root
+
+    x_test = treefun(data_input)
+    y_output = Solution()
+    print(y_output.isSymmetric(x_test))
+
+    '''
+    # 24 NOV, 2018
+            list_left = []
         list_right = []
         def listTree(x,val_type):
             if x:
@@ -48,38 +95,7 @@ class Solution:
                     bool_in = isMirror(x_l.right, x_r.left)
                     return bool_in and bool_out
         return isMirror(root.left,root.right)
-
-
-if __name__ == '__main__':
-    data_input = [1,2,2,3,4,4,3]
-    # data_tn = TreeNode(data_input[0])
-    # data_input.pop(0)
-    # data_tn.left = TreeNode
-    # print(len(data_input))
-
-    def treefun(x):
-        # print(len(x))
-        root = TreeNode(x[0])
-        front = 0
-        i = 0
-        list_node = [root]
-        while i < len(x)-1:
-            base_node = list_node[front]
-            i += 1
-            front += 1
-            # print(i)
-            base_node.left = TreeNode(x[i])
-            list_node.append(base_node.left)
-
-            i += 1
-            # print(i)
-            base_node.right = TreeNode(x[i])
-            list_node.append(base_node.right)
-        return root
-
-    x_test = treefun(data_input)
-    y_output = Solution()
-    print(y_output.isSymmetric(x_test))
+    '''
 
     # def printTree(x,level_i):
     #     if x:
