@@ -30,11 +30,11 @@ zz=l1=ListNode(1)
 l1.next = ListNode(2)
 l1.next.next = ListNode(3)
 
-
-while l1:
-    print(l1.val)
-    l1=l1.next
-
-while zz:
-    print(zz.val)
-    zz=zz.next
+print(l1.next.val)
+# while l1:
+#     print(l1.val)
+#     l1=l1.next
+#
+# while zz:
+#     print(zz.val)
+#     zz=zz.next
