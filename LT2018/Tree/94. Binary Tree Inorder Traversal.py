@@ -18,9 +18,14 @@ class Solution:
         :type root: TreeNode
         :rtype: List[int]
         """
-        if root.left.left:
-            return self.inorderTraversal(root.left)
-        if root.right
+        def helper(root,res = []):
+            if root:
+                helper(root.left,res)
+                res.append(root.val)
+                helper(root.right,res)
+        res = []
+        helper(root,res)
+        return res
 
 if __name__ == '__main__':
     dt_input = TreeNode(1)
@@ -35,4 +40,26 @@ if __name__ == '__main__':
             if tnd.right:
                 visit_tree(tnd.right)
     # visit_tree(dt_input)
-    print(Solution.inorderTraversal(dt_input))
+    print(Solution().inorderTraversal(dt_input))
+
+'''
+Given a binary tree, return the inorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [1,3,2]
+Follow up: Recursive solution is trivial, could you do it iteratively?
+
+5 dec, 2018
+        if root.left.left:
+            return self.inorderTraversal(root.left)
+        if root.right
+
+'''
