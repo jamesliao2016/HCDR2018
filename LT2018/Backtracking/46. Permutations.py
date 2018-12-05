@@ -8,6 +8,38 @@ class Solution:
         """
         res = [[]]
         for i in nums:
+            tmp = []
+            for j in res:
+
+                for k in range(len(j)+1):
+                    tmp.append(j[k:]+[i]+j[:k])
+            res = tmp
+        return res
+
+if __name__ == '__main__':
+    data_input = [1,2,3]
+    data_output = Solution()
+    print(data_output.permute(data_input))
+
+    '''
+    Given a collection of distinct integers, return all possible permutations.
+
+Example:
+
+Input: [1,2,3]
+Output:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+
+    5 dec
+            res = [[]]
+        for i in nums:
             tmp_res = []
             for j in res:
                 for k in range(len(j)+1):
@@ -15,7 +47,4 @@ class Solution:
             res = tmp_res
         return res
 
-if __name__ == '__main__':
-    data_input = [1,2,3]
-    data_output = Solution()
-    print(data_output.permute(data_input))
+    '''
