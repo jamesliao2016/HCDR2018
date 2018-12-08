@@ -10,6 +10,7 @@ def parititon(s,l,r):
             s[l] = s[r]
         while l<r and val_key > s[l]:
             l += 1
+        print(val_key,s[l])
         if l < r:
             s[r] = s[l]
     s[l] = val_key
@@ -18,13 +19,17 @@ def parititon(s,l,r):
 def quick_sort_standord(s,l,r):
     if l<r:
         val_l = parititon(s,l,r)
+        print(s[l:val_l + 1])
+        # print(val_l)
         quick_sort_standord(s,l,val_l)
+        # print(s[l:val_l+1])
         quick_sort_standord(s,val_l+1,r)
 
 
 if __name__ == '__main__':
     # array2 = [9,3,2,1,4,6,7,0,5]
-    array2 = [3,2,1,5,6,4]
+    # array2 = [3,2,1,5,6,4]
+    array2 = [5,6,3,4,1,2]
 
 
     print (array2)
