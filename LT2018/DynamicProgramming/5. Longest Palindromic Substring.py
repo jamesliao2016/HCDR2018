@@ -4,6 +4,44 @@ class Solution:
         :type s: str
         :rtype: str
         """
+        def helper(s,l,r):
+            res = ''
+            while l<=r and l>=0 and r<len(s) and s[l] == s[r]:
+                res = s[l:r+1]
+                l,r = l-1,r+1
+            return res
+
+        res = ''
+        for i in range(len(s)-1):
+            r1 = helper(s,i,i)
+            r2 = helper(s,i,i+1)
+            res1 = r1 if len(r1)>len(r2) else r2
+            res = res1 if len(res1)>len(res) else res
+        return res
+
+if __name__ == '__main__':
+    data_input = 'babad'
+    # data_input = 'cbbd'
+    data_output = Solution()
+    print(data_output.longestPalindrome(data_input))
+
+    '''
+    Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+Example 2:
+
+Input: "cbbd"
+Output: "bb"
+    '''
+
+    '''
+    6 dec
+    
         def ret_tmp(s,l,r):
             res = []
             while l>=0 and r<len(s) and s[l] == s[r]:
@@ -24,19 +62,6 @@ class Solution:
                 res = tmp_res
         return res
 
-
-
-
-
-
-
-if __name__ == '__main__':
-    data_input = 'babad'
-    # data_input = 'cbbd'
-    data_output = Solution()
-    print(data_output.longestPalindrome(data_input))
-
-    '''
     # 20 nov, 2018
             def toolfun(i,j):
             tmp_res = ''
