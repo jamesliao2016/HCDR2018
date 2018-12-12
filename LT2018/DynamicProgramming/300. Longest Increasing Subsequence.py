@@ -10,7 +10,7 @@ class Solution:
         dp = [1]*len(nums)
         for i in range(len(nums)-1,-1,-1):
             for j in range(len(nums)-1,i-1,-1):
-                if nums[j]>nums[i]:
+                if nums[i]<nums[j]:
                     dp[i] = max(dp[i],dp[j]+1)
         return max(dp)
 
@@ -32,4 +32,14 @@ Note:
 There may be more than one LIS combination, it is only necessary for you to return the length.
 Your algorithm should run in O(n2) complexity.
 Follow up: Could you improve it to O(n log n) time complexity?
+
+12 dec
+
+        dp = [1]*len(nums)
+        for i in range(len(nums)-1,-1,-1):
+            for j in range(len(nums)-1,i-1,-1):
+                if nums[j]>nums[i]:
+                    dp[i] = max(dp[i],dp[j]+1)
+        return max(dp)
+
     '''

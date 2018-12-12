@@ -7,14 +7,12 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
-        if len(nums)==0:
-            return 0
         nums.sort()
         res = 1
         tmp = 1
         for i in range(1,len(nums)):
-            if nums[i] != nums[i-1]:
-                if nums[i] == nums[i-1]+1:
+            if nums[i]!=nums[i-1]:
+                if nums[i]==nums[i-1]+1:
                     tmp += 1
                 else:
                     res = max(res,tmp)
@@ -36,4 +34,21 @@ Example:
 Input: [100, 4, 200, 1, 3, 2]
 Output: 4
 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+12 dec
+
+        if len(nums)==0:
+            return 0
+        nums.sort()
+        res = 1
+        tmp = 1
+        for i in range(1,len(nums)):
+            if nums[i] != nums[i-1]:
+                if nums[i] == nums[i-1]+1:
+                    tmp += 1
+                else:
+                    res = max(res,tmp)
+                    tmp = 1
+        return max(res,tmp)
+
     '''

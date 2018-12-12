@@ -15,18 +15,21 @@ class Solution:
         :rtype: List[List[int]]
         """
         res,tmp = [],[root]
-        cnt = 0
-        while root and tmp:
+        cnt=0
+        while tmp and root:
             if cnt%2==0:
                 res.append([i.val for i in tmp])
             else:
                 res.append([i.val for i in tmp][::-1])
+            cnt += 1
             ir = [[i.left,i.right] for i in tmp]
             tmp = [leaf for i in ir for leaf in i if leaf]
         return res
 
+
 if __name__ == '__main__':
-    data_input = [1, 2, 3, 3, 4, 4, 3]
+    # data_input = [1, 2, 3, 3, 4, 4, 3]
+    data_input = [3,9,20,'null','null',15,7]
 
     def treefun(x):
         # print(len(x))
@@ -38,12 +41,14 @@ if __name__ == '__main__':
             base_node = list_node[front]
             i += 1
             front += 1
-            base_node.left = TreeNode(x[i])
-            list_node.append(base_node.left)
+            if x[i]!='null':
+                base_node.left = TreeNode(x[i])
+                list_node.append(base_node.left)
 
             i += 1
-            base_node.right = TreeNode(x[i])
-            list_node.append(base_node.right)
+            if x[i]!='null':
+                base_node.right = TreeNode(x[i])
+                list_node.append(base_node.right)
         return root
 
     x_test = treefun(data_input)
@@ -66,4 +71,17 @@ return its zigzag level order traversal as:
   [15,7]
 ]
 
+# 12 dec
+
+        res,tmp = [],[root]
+        cnt = 0
+        while root and tmp:
+            if cnt%2==0:
+                res.append([i.val for i in tmp])
+            else:
+                res.append([i.val for i in tmp][::-1])
+            ir = [[i.left,i.right] for i in tmp]
+            tmp = [leaf for i in ir for leaf in i if leaf]
+        return res
+        
 '''

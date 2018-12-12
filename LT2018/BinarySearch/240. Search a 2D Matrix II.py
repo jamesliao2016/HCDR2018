@@ -8,15 +8,20 @@ class Solution:
         :type target: int
         :rtype: bool
         """
-        m,n=0,len(matrix[0])-1
-        while m<len(matrix) and n>=0:
-            if matrix[m][n] == target:
+        if len(matrix)==0:
+            return False
+        if len(matrix)==1:
+            return target in matrix[0]
+        l,r = 0,len(matrix[0])-1
+        while l>=0 and l<len(matrix) and r>=0 and r<len(matrix[0]):
+            if matrix[l][r]==target:
                 return True
-            if matrix[m][n] > target:
-                n-=1
+            if matrix[l][r] > target:
+                r -= 1
             else:
-                m+=1
+                l += 1
         return False
+
 if __name__ == '__main__':
     ipt = [
   [1,   4,  7, 11, 15],
@@ -25,8 +30,8 @@ if __name__ == '__main__':
   [10, 13, 14, 17, 24],
   [18, 21, 23, 26, 30]
 ]
-    # nn=20
-    nn=5
+    nn=20
+    # nn=5
     print(Solution().searchMatrix(ipt,nn))
 
     '''
@@ -49,5 +54,16 @@ Given target = 5, return true.
 
 Given target = 20, return false.
 
+12 dec
 
+        m,n=0,len(matrix[0])-1
+        while m<len(matrix) and n>=0:
+            if matrix[m][n] == target:
+                return True
+            if matrix[m][n] > target:
+                n-=1
+            else:
+                m+=1
+        return False
+        
     '''
