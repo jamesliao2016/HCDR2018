@@ -1,35 +1,62 @@
 #!/usr/bin/env python2
 # coding:utf-8
 
-def parititon(s,l,r):
-    val_key = s[l]
-    while l<r:
-        while l<r and val_key < s[r]:
-            r -= 1
-        if l < r:
-            s[l] = s[r]
-        while l<r and val_key > s[l]:
-            l += 1
-        print(val_key,s[l])
-        if l < r:
-            s[r] = s[l]
-    s[l] = val_key
-    return l
+# def parititon(s,l,r):
+#     val_key = s[l]
+#     while l<r:
+#         while l<r and val_key < s[r]:
+#             r -= 1
+#         if l < r:
+#             s[l] = s[r]
+#         while l<r and val_key > s[l]:
+#             l += 1
+#         # print(val_key,s[l])
+#         if l < r:
+#             s[r] = s[l]
+#     s[l] = val_key
+#     return l
+#
+# def quick_sort_standord(s,l,r):
+#     if l<r:
+#         val_l = parititon(s,l,r)
+#         # print(s[l:val_l + 1])
+#         # print(val_l)
+#         quick_sort_standord(s,l,val_l)
+#         # print(s[l:val_l+1])
+#         quick_sort_standord(s,val_l+1,r)
 
-def quick_sort_standord(s,l,r):
-    if l<r:
-        val_l = parititon(s,l,r)
-        print(s[l:val_l + 1])
-        # print(val_l)
-        quick_sort_standord(s,l,val_l)
-        # print(s[l:val_l+1])
-        quick_sort_standord(s,val_l+1,r)
+def quick_sort_standord(array,low,high):
+    if low < high:
+        key_index = partion(array,low,high)
+        quick_sort_standord(array,low,key_index)
+        quick_sort_standord(array,key_index+1,high)
+
+def partion(array,low,high):
+    key = array[low]
+    while low < high:
+        while low < high and array[high] >= key:
+            high -= 1
+        # print(high)
+        # print(key)
+        if low < high:
+            array[low] = array[high]
+
+        while low < high and array[low] < key:
+            low += 1
+        # print(low)
+        if low < high:
+            array[high] = array[low]
+        # print(low,high)
+
+    array[low] = key
+    return low
 
 
 if __name__ == '__main__':
     # array2 = [9,3,2,1,4,6,7,0,5]
     # array2 = [3,2,1,5,6,4]
-    array2 = [5,6,3,4,1,2]
+    # array2 = [5,6,3,4,1,2]
+    array2 = [2,0,2,1,1,0]
 
 
     print (array2)
