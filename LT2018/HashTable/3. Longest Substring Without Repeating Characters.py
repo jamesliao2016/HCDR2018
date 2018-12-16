@@ -4,6 +4,28 @@ class Solution:
         :type s: str
         :rtype: int
         """
+        res = 0
+        starter = 0
+        dict_n = {}
+        for i in range(len(s)):
+            if s[i] in dict_n:
+                starter = max(starter,dict_n[s[i]]+1)
+                res = max(res,i - starter + 1)
+            else:
+                res = max(res, i - starter + 1)
+            dict_n[s[i]] = i
+        return res
+
+if __name__ == '__main__':
+    # data_input = "bbbbb"
+    # data_input = "pwwkew"
+    # data_input = "abcabcbb"
+    data_input = "anviaj"
+    data_output = Solution()
+    print(data_output.lengthOfLongestSubstring(data_input))
+
+'''
+6 dec
         if s == '':
             return 0
         l1,l2 = 0,1
@@ -18,10 +40,22 @@ class Solution:
                 # l2 = l1+1
         return res
 
-if __name__ == '__main__':
-    # data_input = "bbbbb"
-    # data_input = "pwwkew"
-    # data_input = "abcabcbb"
-    data_input = "anviaj"
-    data_output = Solution()
-    print(data_output.lengthOfLongestSubstring(data_input))
+Given a string, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+Example 2:
+
+Input: "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+'''
