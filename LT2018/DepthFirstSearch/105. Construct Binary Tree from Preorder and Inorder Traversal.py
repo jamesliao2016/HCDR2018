@@ -15,14 +15,12 @@ class Solution:
         :type inorder: List[int]
         :rtype: TreeNode
         """
-        # res = TreeNode(preorder[0])
-        # res.left = TreeNode(inorder[0])
-        if inorder:
+        while inorder:
             idx = inorder.index(preorder.pop(0))
-            node = TreeNode(inorder[idx])
-            node.left = self.buildTree(preorder,inorder[:idx])
-            node.right = self.buildTree(preorder,inorder[idx+1:])
-            return node
+            res = TreeNode(inorder[idx])
+            res.left = self.buildTree(preorder,inorder[:idx])
+            res.right = self.buildTree(preorder,inorder[idx+1:])
+            return res
 
 if __name__ == '__main__':
     preorder = [3, 9, 20, 15, 7]
@@ -54,4 +52,14 @@ Return the following binary tree:
   9  20
     /  \
    15   7
+   
+   # dec 17
+   
+           if inorder:
+            idx = inorder.index(preorder.pop(0))
+            node = TreeNode(inorder[idx])
+            node.left = self.buildTree(preorder,inorder[:idx])
+            node.right = self.buildTree(preorder,inorder[idx+1:])
+            return node
+
     '''
