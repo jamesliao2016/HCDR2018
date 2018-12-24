@@ -1,8 +1,25 @@
 #!/usr/bin/env python2
 # coding:utf-8
 
-'''
 
+class Solution:
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dicts = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+        res = 0
+        for i in range(len(s)-1):
+            if dicts[s[i]]>dicts[s[i+1]]:
+                res += dicts[s[i]]
+            else:
+                res -= dicts[s[i]]
+        res += dicts[s[-1]]
+        return res
+if __name__ == '__main__':
+    print(Solution().romanToInt('IX'))
+'''
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
 Symbol       Value
@@ -23,12 +40,9 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
 '''
 
-class Solution:
-    def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+'''
+dec 24
+
         dict_n ={'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
         res = 0
         for i in range(len(s)-1):
@@ -40,5 +54,4 @@ class Solution:
                 res += dict_n[val]
         return res + dict_n[s[len(s)-1]]
 
-if __name__ == '__main__':
-    print(Solution().romanToInt('IX'))
+'''
