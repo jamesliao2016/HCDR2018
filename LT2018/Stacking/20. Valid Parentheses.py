@@ -17,27 +17,28 @@ class Solution:
         :type s: str
         :rtype: bool
         """
+        dictp = {'(':')','[':']','{':'}'}
         tmp = []
-        dict_s = {'(':')','{':'}','[':']'}
         lst = list(s)
         while lst:
             i = lst.pop()
             if not tmp:
                 tmp.append(i)
             else:
-                if i in dict_s:
-                    if dict_s[i] != tmp[-1]:
-                        return False
-                    else:
+                if i in dictp:
+                    if dictp[i]==tmp[-1]:
                         tmp.pop()
+                    else:
+                        return False
                 else:
                     tmp.append(i)
-        return not tmp
+        return True and len(tmp)==0
 
 
 if __name__ == '__main__':
     dt_ipt = "()"
     # dt_ipt = "()[]{}"
+    # dt_ipt = "([)]"
     dt_opt = Solution()
     print(dt_opt.isValid(dt_ipt))
 
@@ -70,6 +71,26 @@ Example 5:
 
 Input: "{[]}"
 Output: true
+
+dec 25
+
+        tmp = []
+        dict_s = {'(':')','{':'}','[':']'}
+        lst = list(s)
+        while lst:
+            i = lst.pop()
+            if not tmp:
+                tmp.append(i)
+            else:
+                if i in dict_s:
+                    if dict_s[i] != tmp[-1]:
+                        return False
+                    else:
+                        tmp.pop()
+                else:
+                    tmp.append(i)
+        return not tmp
+
     
     dec 19
     
