@@ -10,22 +10,20 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        # res = ListNode(head.val)
-        # head = head.next
         tmp = slow = head
-
         for _ in range(n):
             tmp = tmp.next
-
         if not tmp:
-            return head.next
+            return head
         while tmp.next:
-            tmp =  tmp.next
+            tmp = tmp.next
             slow = slow.next
         slow.next = slow.next.next
-        # slow.next.next = slow.next.next.next
-        # tmp.next.next = tmp.next.next.next
-
+        # tmp = tmp.next
+        # slow = slow.next
+        # slow.next = slow.next.next
+        # return slow
+        # return tmp
         return head
 
 if __name__ == '__main__':
@@ -51,3 +49,39 @@ if __name__ == '__main__':
     # while tmp:
     #     print(tmp.val)
     #     tmp=tmp.next
+
+    '''
+    Given a linked list, remove the n-th node from the end of list and return its head.
+
+Example:
+
+Given linked list: 1->2->3->4->5, and n = 2.
+
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+Note:
+
+Given n will always be valid.
+
+Follow up:
+
+Could you do this in one pass?
+    
+            # res = ListNode(head.val)
+        # head = head.next
+        tmp = slow = head
+
+        for _ in range(n):
+            tmp = tmp.next
+
+        if not tmp:
+            return head.next
+        while tmp.next:
+            tmp =  tmp.next
+            slow = slow.next
+        slow.next = slow.next.next
+        # slow.next.next = slow.next.next.next
+        # tmp.next.next = tmp.next.next.next
+
+        return head
+
+    '''
