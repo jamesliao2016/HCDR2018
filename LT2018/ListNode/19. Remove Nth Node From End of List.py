@@ -10,7 +10,7 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        tmp = slow = head
+        slow = tmp = head
         for _ in range(n):
             tmp = tmp.next
         if not tmp:
@@ -19,11 +19,6 @@ class Solution(object):
             tmp = tmp.next
             slow = slow.next
         slow.next = slow.next.next
-        # tmp = tmp.next
-        # slow = slow.next
-        # slow.next = slow.next.next
-        # return slow
-        # return tmp
         return head
 
 if __name__ == '__main__':
@@ -65,6 +60,26 @@ Given n will always be valid.
 Follow up:
 
 Could you do this in one pass?
+
+DEC 26
+
+        tmp = slow = head
+        for _ in range(n):
+            tmp = tmp.next
+        if not tmp:
+            return head
+        while tmp.next:
+            tmp = tmp.next
+            slow = slow.next
+        slow.next = slow.next.next
+        # tmp = tmp.next
+        # slow = slow.next
+        # slow.next = slow.next.next
+        # return slow
+        # return tmp
+        return head
+
+DEC 25
     
             # res = ListNode(head.val)
         # head = head.next
