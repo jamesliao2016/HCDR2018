@@ -16,11 +16,11 @@ class Solution:
         """
         if not root:
             return True
-        if root.val >= smallerThan or root.val <= largerThan:
+        if root.val <= largerThan or root.val >= smallerThan:
             return False
         else:
-            return self.isValidBST(root.left,root.val,largerThan)\
-                   and self.isValidBST(root.right,smallerThan,root.val)
+            return self.isValidBST(root.left,root.val,largerThan) and \
+        self.isValidBST(root.right,smallerThan,root.val)
 
 if __name__ == '__main__':
     # data_input = [1,2,2,3,4,4,3]
@@ -90,4 +90,15 @@ Example 2:
 Output: false
 Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
              is 5 but its right child's value is 4.
+             
+             # dec 29
+             
+        if not root:
+            return True
+        if root.val >= smallerThan or root.val <= largerThan:
+            return False
+        else:
+            return self.isValidBST(root.left,root.val,largerThan)\
+                   and self.isValidBST(root.right,smallerThan,root.val)
+             
     '''

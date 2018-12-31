@@ -9,18 +9,18 @@ class Solution:
         :type head: ListNode
         :rtype: ListNode
         """
-        def mg(l,r):
+        def mergeList(l1,l2):
             res = tmp = ListNode(0)
-            while l and r:
-                if l.val > r.val:
-                    tmp.next = ListNode(r.val)
+            while l1 and l2:
+                if l1.val < l2.val:
+                    tmp.next = ListNode(l1.val)
                     tmp = tmp.next
-                    r = r.next
+                    l1 = l1.next
                 else:
-                    tmp.next = ListNode(l.val)
+                    tmp.next = ListNode(l2.val)
                     tmp = tmp.next
-                    l = l.next
-            tmp.next = l or r
+                    l2 = l2.next
+            tmp.next = l1 or l2
             return res.next
         if not head or not head.next:
             return head
@@ -28,11 +28,11 @@ class Solution:
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        second = slow.next
+        tail = slow.next
         slow.next = None
-        l = self.sortList(head)
-        r = self.sortList(second)
-        return mg(l,r)
+        l1 = self.sortList(head)
+        l2 = self.sortList(tail)
+        return mergeList(l1,l2)
 
 
 if __name__ == '__main__':
@@ -70,5 +70,64 @@ Example 2:
 
 Input: -1->5->3->4->0
 Output: -1->0->3->4->5
+
+# dec 31
+
+        def divideList(head):
+            if not head or not head.next:
+                return head
+            tmp = slow = head
+            fast = head.next
+            while fast and fast.next:
+                slow = slow.next
+                fast = fast.next.next
+            tail = slow.next
+            slow.next = None
+            head = tmp
+            l1 = divideList(head)
+            l2 = divideList(tail)
+            return mergeList(l1,l2)
+
+        def mergeList(l1,l2):
+            res = tmp = ListNode(0)
+            while l1 and l2:
+                if l1.val < l2.val:
+                    tmp.next = ListNode(l1.val)
+                    tmp = tmp.next
+                    l1 = l1.next
+                else:
+                    tmp.next = ListNode(l2.val)
+                    tmp = tmp.next
+                    l2 = l2.next
+            tmp.next = l1 or l2
+            return res.next
+
+        return divideList(head)
+
+# dec 30
+        def mg(l,r):
+            res = tmp = ListNode(0)
+            while l and r:
+                if l.val > r.val:
+                    tmp.next = ListNode(r.val)
+                    tmp = tmp.next
+                    r = r.next
+                else:
+                    tmp.next = ListNode(l.val)
+                    tmp = tmp.next
+                    l = l.next
+            tmp.next = l or r
+            return res.next
+        if not head or not head.next:
+            return head
+        slow,fast = head,head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        second = slow.next
+        slow.next = None
+        l = self.sortList(head)
+        r = self.sortList(second)
+        return mg(l,r)
 
     '''

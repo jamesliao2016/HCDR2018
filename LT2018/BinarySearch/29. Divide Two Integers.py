@@ -5,29 +5,21 @@ class Solution:
         :type divisor: int
         :rtype: int
         """
-        did2 = abs(dividend)
-        dir2 = abs(divisor)
-        sig = 1
-        tmp = [did2+dividend,dir2+divisor]
-        j = 0
-        for i in tmp:
-            if i==0:
-                j+=1
-        if j==1:
-            sig = -1
+        sig = (divisor>0 and dividend>0) or (divisor<0 and dividend<0)
+        divisor,dividend = abs(divisor), abs(dividend)
         res = 0
-        while did2>=dir2:
-            tmp_did = did2
-            tmp_dir = dir2
-            j=1
-            while did2>=tmp_dir:
-                res += j
-                did2 -= tmp_dir
-                j <<1
-                tmp_dir<<1
-        if sig<0:
+        while dividend >= divisor:
+            tmp = 1
+            div = divisor
+            while dividend>=div:
+                res += tmp
+                dividend -= div
+                div<<=1
+                tmp<<=1
+        if not sig:
             res = -res
-        return res
+        return max(-pow(2,31),min(res,pow(2,31)-1))
+
 
 if __name__ == '__main__':
     y = Solution()
@@ -60,6 +52,32 @@ Assume we are dealing with an environment which could only
 store integers within the 32-bit signed integer range: [−231,  231 − 1].
  For the purpose of this problem, assume that your function returns 231 − 1 when the division 
  result overflows.
+ 
+ # dec 29
+ 
+         did2 = abs(dividend)
+        dir2 = abs(divisor)
+        sig = 1
+        tmp = [did2+dividend,dir2+divisor]
+        j = 0
+        for i in tmp:
+            if i==0:
+                j+=1
+        if j==1:
+            sig = -1
+        res = 0
+        while did2>=dir2:
+            tmp_did = did2
+            tmp_dir = dir2
+            j=1
+            while did2>=tmp_dir:
+                res += j
+                did2 -= tmp_dir
+                j <<1
+                tmp_dir<<1
+        if sig<0:
+            res = -res
+        return res
     
     # dec 28
     
