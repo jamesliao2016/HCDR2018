@@ -1,3 +1,8 @@
+'''
+来自李航 <<统计学习方法>>第50页的例子
+朴素贝叶斯
+'''
+
 class Solution():
     def __init__(self,train):
         self.train = train
