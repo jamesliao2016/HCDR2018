@@ -9,11 +9,12 @@ class Solution:
         """
         res = 0
         for i in range(len(s)):
-            tmp = ord(s[i]) - ord('A') + 1
-            tmp = tmp * pow(26,(len(s) - i - 1))
+            tmp = pow(26,(len(s)-i-1)) * (ord(s[i]) - ord('A') + 1)
             res += tmp
         return res
 if __name__ == '__main__':
+    ipt = "ZY"
+    print(Solution().titleToNumber(ipt))
 
 '''
 Given a column title as appear in an Excel sheet, return its corresponding column number.
@@ -40,4 +41,13 @@ Example 3:
 
 Input: "ZY"
 Output: 701
+
+# jan 1, 2019
+        res = 0
+        for i in range(len(s)):
+            tmp = ord(s[i]) - ord('A') + 1
+            tmp = tmp * pow(26,(len(s) - i - 1))
+            res += tmp
+        return res
+
 '''
