@@ -10,27 +10,24 @@ class Solution:
         if not grid:
             return 0
         def dfs(grid,i,j):
-
             if i<0 or i>=len(grid) or j<0 or j>=len(grid[0]) or grid[i][j]!='1':
-                return
+                return 0
             grid[i][j] = '#'
             dfs(grid,i+1,j)
             dfs(grid,i-1,j)
             dfs(grid,i,j+1)
             dfs(grid,i,j-1)
-
+            return 1
         res = 0
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] == '1':
-                    res += 1
-                    dfs(grid,i,j)
+                res += dfs(grid,i,j)
         return res
 
 
 if __name__ == '__main__':
-    # ipt = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
-    ipt = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
+    ipt = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
+    # ipt = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
     print(Solution().numIslands(ipt))
 
     '''
@@ -55,6 +52,48 @@ Input:
 00011
 
 Output: 3
+
+# Jan 3, 2018
+        if not grid:
+            return 0
+        res = 0
+        def dfs(grid,i,j):
+            if i<0 or i >=len(grid) or j<0 or j>= len(grid[0]) or grid[i][j]!='1':
+                return
+            grid[i][j] = '#'
+            dfs(grid,i+1,j)
+            dfs(grid,i-1,j )
+            dfs(grid,i,j+1 )
+            dfs(grid,i,j-1 )
+            return 1
+
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if dfs(grid,i,j):
+                    res +=1
+        return res
+        
+# Jan 2, 2018
+        if not grid:
+            return 0
+        def dfs(grid,i,j):
+
+            if i<0 or i>=len(grid) or j<0 or j>=len(grid[0]) or grid[i][j]!='1':
+                return
+            grid[i][j] = '#'
+            dfs(grid,i+1,j)
+            dfs(grid,i-1,j)
+            dfs(grid,i,j+1)
+            dfs(grid,i,j-1)
+
+        res = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == '1':
+                    res += 1
+                    dfs(grid,i,j)
+        return res
+
 
 # jan 1, 2019
         def dfs(grid,i,j):
