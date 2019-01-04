@@ -9,7 +9,7 @@ class Solution:
         """
         for i in range(len(nums)-1,len(nums) - k - 1,-1):
             for j in range(i):
-                if nums[j]>=nums[i]:
+                if nums[i]<nums[j]:
                     nums[i],nums[j] = nums[j],nums[i]
         return nums[-k]
 
@@ -21,6 +21,13 @@ if __name__ == '__main__':
     print(output_y.findKthLargest(input_nums,input_k))
 
     '''
+    # 4 Jan, 2019
+            for i in range(len(nums)-1,len(nums) - k - 1,-1):
+            for j in range(i):
+                if nums[j]>=nums[i]:
+                    nums[i],nums[j] = nums[j],nums[i]
+        return nums[-k]
+
     # 2 Jan, 2019
             for i in range(len(nums)-1,len(nums)-k-2,-1):
             for j in range(i):

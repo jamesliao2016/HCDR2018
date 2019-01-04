@@ -60,5 +60,16 @@ Output: 3
 Follow up:
 What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
 
+# 4 Jan, 2019
+        res = []
+        def helper(root):
+            if root:
+                helper(root.left)
+                res.append(root.val)
+                helper(root.right)
+        helper(root)
+        return res[k-1]
+
+
 
 '''
