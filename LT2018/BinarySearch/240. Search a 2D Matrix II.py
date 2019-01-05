@@ -8,16 +8,17 @@ class Solution:
         :type target: int
         :rtype: bool
         """
-        if not max(matrix):
+        if len(matrix)==0:
             return False
-        l, r = 0, len(matrix[0]) - 1
+        l,r = 0,len(matrix[0])-1
         while l>=0 and l<len(matrix) and r>=0 and r<len(matrix[0]):
-            if matrix[l][r] == target:
+            if matrix[l][r]==target:
                 return True
-            elif matrix[l][r] > target:
-                r -= 1
-            else:
+            # else:
+            elif matrix[l][r]<target:
                 l+=1
+            else:
+                r-=1
         return False
 
 if __name__ == '__main__':
@@ -28,8 +29,8 @@ if __name__ == '__main__':
   [10, 13, 14, 17, 24],
   [18, 21, 23, 26, 30]
 ]
-    nn=20
-    # nn=5
+    # nn=20
+    nn=5
     print(Solution().searchMatrix(ipt,nn))
 
     '''
@@ -51,6 +52,20 @@ Consider the following matrix:
 Given target = 5, return true.
 
 Given target = 20, return false.
+
+# 5 jan, 2019
+        if not max(matrix):
+            return False
+        l, r = 0, len(matrix[0]) - 1
+        while l>=0 and l<len(matrix) and r>=0 and r<len(matrix[0]):
+            if matrix[l][r] == target:
+                return True
+            elif matrix[l][r] > target:
+                r -= 1
+            else:
+                l+=1
+        return False
+
 
 # 4 jan, 2019
         if len(matrix)==0:

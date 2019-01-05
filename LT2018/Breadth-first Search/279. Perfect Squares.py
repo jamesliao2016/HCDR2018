@@ -7,6 +7,42 @@ class Solution:
         :type n: int
         :rtype: int
         """
+        level = [n]
+        res = 0
+        while level:
+            res += 1
+            tmp = []
+            for i in level:
+                j = 1
+                while j*j<=i:
+                    tmp.append(i-j*j)
+                    if i == j*j:
+                        return res
+                    j+=1
+            level = list(set(tmp))
+            # print(level)
+
+if __name__ == '__main__':
+    # ipt = 12
+    ipt = 13
+    print(Solution().numSquares(ipt))
+
+    '''
+    Given a positive integer n, find the least number of perfect square numbers 
+    (for example, 1, 4, 9, 16, ...) which sum to n.
+
+Example 1:
+
+Input: n = 12
+Output: 3 
+Explanation: 12 = 4 + 4 + 4.
+Example 2:
+
+Input: n = 13
+Output: 2
+Explanation: 13 = 4 + 9.
+
+# 5 jan, 2019
         if n==0:
             return 0
         res = 0
@@ -30,27 +66,7 @@ class Solution:
                         tmp.add(i-j)
             nn = tmp
 
-
-
-if __name__ == '__main__':
-    ipt = 12
-    print(Solution().numSquares(ipt))
-
-    '''
-    Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
-
-Example 1:
-
-Input: n = 12
-Output: 3 
-Explanation: 12 = 4 + 4 + 4.
-Example 2:
-
-Input: n = 13
-Output: 2
-Explanation: 13 = 4 + 9.
-
-12 dec 
+# 12 dec 
 
         i = 1
         lst = []
