@@ -6,13 +6,13 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
-        dictn = {}
+        dict_n = {}
         for i in nums:
             try:
-                dictn.pop(i)
+                dict_n.pop(i)
                 return i
             except:
-                dictn[i]=1
+                dict_n[i] = 1
 
 if __name__ == '__main__':
     ipt = [1,3,4,2,2]
@@ -37,4 +37,14 @@ You must not modify the array (assume the array is read only).
 You must use only constant, O(1) extra space.
 Your runtime complexity should be less than O(n2).
 There is only one duplicate number in the array, but it could be repeated more than once.
+
+# 6 jan, 2019
+        dictn = {}
+        for i in nums:
+            try:
+                dictn.pop(i)
+                return i
+            except:
+                dictn[i]=1
+
 '''

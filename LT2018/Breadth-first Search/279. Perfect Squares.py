@@ -7,24 +7,23 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        level = [n]
         res = 0
-        while level:
+        listN = [n]
+        while listN:
             res += 1
             tmp = []
-            for i in level:
-                j = 1
+            for i in listN:
+                j=1
                 while j*j<=i:
-                    tmp.append(i-j*j)
-                    if i == j*j:
+                    tmp.append(i - j*j)
+                    if i - j*j ==0:
                         return res
                     j+=1
-            level = list(set(tmp))
-            # print(level)
+            listN = tmp
 
 if __name__ == '__main__':
-    # ipt = 12
-    ipt = 13
+    ipt = 12
+    # ipt = 13
     print(Solution().numSquares(ipt))
 
     '''
@@ -41,6 +40,23 @@ Example 2:
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
+
+# 6 jan, 2019
+        level = [n]
+        res = 0
+        while level:
+            res += 1
+            tmp = []
+            for i in level:
+                j = 1
+                while j*j<=i:
+                    tmp.append(i-j*j)
+                    if i == j*j:
+                        return res
+                    j+=1
+            level = list(set(tmp))
+            # print(level)
+
 
 # 5 jan, 2019
         if n==0:

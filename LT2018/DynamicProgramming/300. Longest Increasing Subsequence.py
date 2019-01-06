@@ -7,13 +7,18 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
-        dp = [1]*len(nums)
-        for i in range(len(nums)-1,-1,-1):
-            for j in range(len(nums)-1,i-1,-1):
-                if nums[i]<nums[j]:
-                    dp[i] = max(dp[i],dp[j]+1)
-        return max(dp)
-
+        if not nums:
+            return 0
+        res = [1]*len(nums)
+        # for i in range(len(nums)):
+        for j in range(len(nums)-1,-1,-1):
+            tmp0 = nums[j+1:]
+            tmp1 = res[j+1:]
+            for k in range(j+1,len(nums)):
+                if nums[j]<nums[k]:
+                    res[j] = max(res[j],(res[k]+1))
+        return max(res)
+        # return res
 
 if __name__ == '__main__':
     ipt = [10,9,2,5,3,7,101,18]
@@ -33,7 +38,16 @@ There may be more than one LIS combination, it is only necessary for you to retu
 Your algorithm should run in O(n2) complexity.
 Follow up: Could you improve it to O(n log n) time complexity?
 
-12 dec
+# 6 jan, 2019
+        dp = [1]*len(nums)
+        for i in range(len(nums)-1,-1,-1):
+            for j in range(len(nums)-1,i-1,-1):
+                if nums[i]<nums[j]:
+                    dp[i] = max(dp[i],dp[j]+1)
+        return max(dp)
+
+
+# 12 dec
 
         dp = [1]*len(nums)
         for i in range(len(nums)-1,-1,-1):
