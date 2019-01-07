@@ -9,17 +9,18 @@ class Solution:
         """
         l = r = float('inf')
         for i in nums:
-            if l>=i:
+            if i<=l:
                 l = i
-            if r>=i:
+                continue
+            if i<=r:
                 r = i
-            else:
+            if i>r:
                 return True
         return False
 
 if __name__ == '__main__':
-    ipt = [1,2,3,4,5]
-    # ipt = [5,4,3,2,1]
+    # ipt = [1,2,3,4,5]
+    ipt = [5,4,3,2,1]
     print(Solution().increasingTriplet(ipt))
 
     '''
@@ -39,5 +40,17 @@ Example 2:
 
 Input: [5,4,3,2,1]
 Output: false
+
+# 7 jan, 2019
+
+        l = r = float('inf')
+        for i in nums:
+            if l>=i:
+                l = i
+            if r>=i:
+                r = i
+            else:
+                return True
+        return False
 
     '''

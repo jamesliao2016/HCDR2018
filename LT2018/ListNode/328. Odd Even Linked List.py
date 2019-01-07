@@ -12,26 +12,12 @@ class Solution:
         :type head: ListNode
         :rtype: ListNode
         """
-        # # slow,fast = head,head.next
-        # res = slow = ListNode(0)
-        # res1 = fast = ListNode(0)
-        # slow.next = head
-        # fast.next = head.next
-        # while slow and slow.next and slow.next.next:
-        #     slow.next = slow.next.next
-        #     slow = slow.next
-        # # while fast and fast.next and fast.next.next:
-        # #     fast.next = fast.next.next
-        # #     fast = fast.next
-        # # slow.next = res1
-        # return head
         res0 = odd = ListNode(0)
         res1 = even = ListNode(0)
         while head:
             odd.next = head
             even.next = head.next
-            head.next = head.next.next if head.next else None
-            head = head.next
+            head = head.next.next if head.next else None
             odd = odd.next
             even = even.next
         odd.next = res1.next
@@ -67,4 +53,18 @@ Note:
 
 The relative order inside both the even and odd groups should remain as it was in the input.
 The first node is considered odd, the second node even and so on ...
+
+# 7 jan, 2019
+        res0 = odd = ListNode(0)
+        res1 = even = ListNode(0)
+        while head:
+            odd.next = head
+            even.next = head.next
+            head.next = head.next.next if head.next else None
+            head = head.next
+            odd = odd.next
+            even = even.next
+        odd.next = res1.next
+        return res0.next
+
 '''
