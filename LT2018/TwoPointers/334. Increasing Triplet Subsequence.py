@@ -7,20 +7,20 @@ class Solution:
         :type nums: List[int]
         :rtype: bool
         """
-        l = r = float('inf')
+        l,r = float('inf'),float('inf')
         for i in nums:
-            if i<=l:
-                l = i
-                continue
-            if i<=r:
-                r = i
-            if i>r:
-                return True
+            if l>=i:
+                l=i
+            else:
+                if r>=i:
+                    r=i
+                else:
+                    return True
         return False
 
 if __name__ == '__main__':
-    # ipt = [1,2,3,4,5]
-    ipt = [5,4,3,2,1]
+    ipt = [1,2,3,4,5]
+    # ipt = [5,4,3,2,1]
     print(Solution().increasingTriplet(ipt))
 
     '''
@@ -40,6 +40,19 @@ Example 2:
 
 Input: [5,4,3,2,1]
 Output: false
+
+# 8 jan, 2019
+        l = r = float('inf')
+        for i in nums:
+            if i<=l:
+                l = i
+                continue
+            if i<=r:
+                r = i
+            if i>r:
+                return True
+        return False
+
 
 # 7 jan, 2019
 
