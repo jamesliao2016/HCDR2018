@@ -7,17 +7,16 @@ class Solution:
         :type n: int
         :rtype: List[str]
         """
-        def gp(l,r,s='',res=[]):
+        def helper(l,r,tmp='',res=[]):
             if l:
-                gp(l-1,r,s+'(',res)
+                helper(l-1,r,tmp+'(',res)
             if l<r:
-                gp(l, r-1, s + ')', res)
-            if r==0:
-                res.append(s)
+                helper(l,r-1,tmp+')',res)
+            if not r:
+                res.append(tmp)
             return res
-        l,r=n,n
         res = []
-        gp(l,r,'',res)
+        helper(n,n,'',res)
         return res
 
 if __name__ == '__main__':
@@ -36,4 +35,18 @@ For example, given n = 3, a solution set is:
   "()(())",
   "()()()"
 ]
+# 11 jan, 2019
+        def gp(l,r,s='',res=[]):
+            if l:
+                gp(l-1,r,s+'(',res)
+            if l<r:
+                gp(l, r-1, s + ')', res)
+            if r==0:
+                res.append(s)
+            return res
+        l,r=n,n
+        res = []
+        gp(l,r,'',res)
+        return res
+
     '''

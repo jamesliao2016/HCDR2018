@@ -6,7 +6,7 @@ class RandomizedSet:
         """
         Initialize your data structure here.
         """
-        self.res=[]
+        self.res = []
 
     def insert(self, val):
         """
@@ -31,6 +31,7 @@ class RandomizedSet:
         else:
             idx = self.res.index(val)
             self.res.pop(idx)
+            return True
 
     def getRandom(self):
         """
@@ -40,7 +41,8 @@ class RandomizedSet:
         if not self.res:
             return False
         else:
-            return self.res[0]
+            import random
+            return random.choice(self.res)
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()

@@ -12,15 +12,17 @@ class Solution:
         res = {}
         for i in A:
             for j in B:
-                if (i+j) not in res:
-                    res[(i+j)]=1
+                tmp = i+j
+                if tmp not in res:
+                    res[tmp] = 1
                 else:
-                    res[(i + j)] += 1
+                    res[tmp] += 1
         cnt = 0
         for i in C:
             for j in D:
-                if -(i+j) in res:
-                    cnt += res[-(i+j)]
+                tmp = -(i+j)
+                if tmp in res:
+                    cnt+=res[tmp]
         return cnt
 
 if __name__ == '__main__':
@@ -52,5 +54,20 @@ Explanation:
 The two tuples are:
 1. (0, 0, 0, 1) -> A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0
 2. (1, 1, 0, 0) -> A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0
+
+# 10 jan, 2019
+        res = {}
+        for i in A:
+            for j in B:
+                if (i+j) not in res:
+                    res[(i+j)]=1
+                else:
+                    res[(i + j)] += 1
+        cnt = 0
+        for i in C:
+            for j in D:
+                if -(i+j) in res:
+                    cnt += res[-(i+j)]
+        return cnt
 
 '''

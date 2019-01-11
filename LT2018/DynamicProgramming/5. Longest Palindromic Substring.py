@@ -4,6 +4,65 @@ class Solution:
         :type s: str
         :rtype: str
         """
+        def helper(i,j):
+            res = ''
+            while i>=0 and j<len(s) and s[i]==s[j]:
+                res = s[i:j+1]
+                i-=1;j+=1
+            return res
+        res = ''
+        for i in range(len(s)):
+            tmp0= helper(i,i)
+            tmp1 = helper(i,i+1)
+            tmp0 = tmp1 if len(tmp1)>len(tmp0) else tmp0
+            res = tmp0 if len(tmp0)>len(res) else res
+        return res
+
+if __name__ == '__main__':
+    data_input = 'babad'
+    # data_input = 'cbbd'
+    data_output = Solution()
+    print(data_output.longestPalindrome(data_input))
+
+    '''
+    Given a string s, find the longest palindromic substring in s. 
+    You may assume that the maximum length of s is 1000.
+
+Example 1:
+
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+Example 2:
+
+Input: "cbbd"
+Output: "bb"
+    '''
+
+    '''
+# 11 jan, 2019
+
+        def helper(i,j):
+            res = ''
+            while i>=0 and j<len(s) and s[i]==s[j]:
+                res = s[i:j + 1]
+                i-=1;j+=1
+            return res
+
+        res = ''
+        for i in range(len(s)):
+            tmp0 = helper(i,i)
+            tmp1 = helper(i,i+1)
+            tmp=''
+            if len(tmp1)>len(tmp0):
+                tmp = tmp1
+            else:
+                tmp = tmp0
+            if len(tmp)>len(res):
+                res = tmp
+        return res
+    
+# 10 jan, 2019
         def helper(s,l,r):
             res = ''
             while l<=r and l>=0 and r<len(s) and s[l] == s[r]:
@@ -18,28 +77,7 @@ class Solution:
             res1 = r1 if len(r1)>len(r2) else r2
             res = res1 if len(res1)>len(res) else res
         return res
-
-if __name__ == '__main__':
-    data_input = 'babad'
-    # data_input = 'cbbd'
-    data_output = Solution()
-    print(data_output.longestPalindrome(data_input))
-
-    '''
-    Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
-
-Example 1:
-
-Input: "babad"
-Output: "bab"
-Note: "aba" is also a valid answer.
-Example 2:
-
-Input: "cbbd"
-Output: "bb"
-    '''
-
-    '''
+    
     6 dec
     
         def ret_tmp(s,l,r):
