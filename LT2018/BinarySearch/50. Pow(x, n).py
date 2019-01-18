@@ -18,6 +18,7 @@ class Solution:
             else:
                 return self.myPow(x*x,int(n/2))*x
 
+
 if __name__ == '__main__':
     # x1=2.1
     # x2=-5
@@ -47,7 +48,18 @@ Note:
 -100.0 < x < 100.0
 n is a 32-bit signed integer, within the range [−231, 231 − 1]
 
-16 jan, 2019
+# 17 Jan, 2019
+        if n==0:
+            return 1
+        if n<0:
+            return self.myPow(1/x,-n)
+        if n>0:
+            if n%2==0:
+                return self.myPow(x*x,int(n/2))
+            else:
+                return self.myPow(x*x,int(n/2))*x
+
+# 16 jan, 2019
         print(n)
         if not n:
             return 1
