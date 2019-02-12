@@ -7,13 +7,16 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        aux = [[1]*n for i in range(m)]
+        aux = [[1]*n for _ in range(m)]
         for i in range(1,m):
             for j in range(1,n):
                 aux[i][j] = aux[i-1][j] + aux[i][j-1]
         return aux[-1][-1]
+
 if __name__ == '__main__':
-    m = 3; n = 2
+    # m = 3; n = 2
+    m = 7;
+    n = 3
     print(Solution().uniquePaths(m,n))
 
 
@@ -44,4 +47,11 @@ Example 2:
 
 Input: m = 7, n = 3
 Output: 28
+
+# 31 JAN, 2019
+        aux = [[1]*n for i in range(m)]
+        for i in range(1,m):
+            for j in range(1,n):
+                aux[i][j] = aux[i-1][j] + aux[i][j-1]
+        return aux[-1][-1]
 '''
