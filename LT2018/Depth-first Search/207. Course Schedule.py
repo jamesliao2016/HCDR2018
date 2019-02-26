@@ -7,12 +7,11 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
-        visit = [0]*numCourses
-        must = [[]] * numCourses
+        visit = [0] * numCourses
+        must = [[]]*numCourses
         for i in prerequisites:
-            # print(i)
-            j = i[0]
-            must[j] = must[j] + i[1:]
+            must[i[0]] = must[i[0]] + i[1:]
+        # print(must)
 
         def dfs(i):
             if visit[i] == -1:
@@ -34,13 +33,13 @@ class Solution(object):
 
 if __name__ == '__main__':
 
-    # cn = 2; ipt = [[1,0],[0,1]]
+    cn = 2; ipt = [[1,0],[0,1]]
     # cn = 2; ipt = [[1,0]]
     # cn = 2;    ipt = [[0, 1]]
     # cn = 3; ipt = [[1, 0], [2, 1]]
     # cn = 3;ipt = [[0,1],[0,2],[1,0]]
     # cn = 3;    ipt = [[0, 1], [0, 2], [1, 2]]
-    cn = 3;    ipt = [[1, 0], [0, 1], [1, 2]]
+    # cn = 3;    ipt = [[1, 0], [0, 1], [1, 2]]
     print(Solution().canFinish(cn,ipt))
 
     '''
@@ -67,6 +66,55 @@ Note:
 
 The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
 You may assume that there are no duplicate edges in the input prerequisites.
+
+# 26 feb, 2019
+        visit = [0]*numCourses
+        must = [[]]*numCourses
+        for i in prerequisites:
+            must[i[0]]=must[i[0]]+i[1:]
+        print(must)
+        def checkFinish(i):
+            if visit[i] == -1:
+                return False
+            if visit[1] == 1:
+                return True
+            visit[i] = -1
+            for j in must[i]:
+                if not checkFinish(j):
+                    return False
+            visit[i] = 1
+            return True
+
+        for i in range(numCourses):
+            if not checkFinish(i):
+                return False
+        return True
+
+
+# 22 feb, 2019
+        visit = [0]*numCourses
+        must = [[]] * numCourses
+        for i in prerequisites:
+            # print(i)
+            j = i[0]
+            must[j] = must[j] + i[1:]
+
+        def dfs(i):
+            if visit[i] == -1:
+                return False
+            if visit[i] == 1:
+                return True
+            visit[i] = -1
+            for j in must[i]:
+                if not dfs(j):
+                    return False
+            visit[i] = 1
+            return True
+
+        for i in range(numCourses):
+            if not dfs(i):
+                return False
+        return True
 
 # 3 jan, 2019
         visit = [0] * numCourses

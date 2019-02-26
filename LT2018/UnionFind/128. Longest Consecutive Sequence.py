@@ -7,15 +7,18 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
-        res = 0
+        if not nums:
+            return 0
         nums.sort()
-        res_tmp = 1
+        res = 1
+        tmp = 1
         for i in range(1,len(nums)):
-            if nums[i]!=nums[i-1]+1:
-                res_tmp =1
-            else:
-                res_tmp+=1
-            res = max(res,res_tmp)
+            if nums[i]!=nums[i-1]:
+                if nums[i]==nums[i-1]+1:
+                    tmp +=1
+                else:
+                    tmp = 1
+                res = max(res,tmp)
         return res
 
 
@@ -42,6 +45,18 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
 
 
 
+
+13 feb, 2019
+        res = 0
+        nums.sort()
+        res_tmp = 1
+        for i in range(1,len(nums)):
+            if nums[i]!=nums[i-1]+1:
+                res_tmp =1
+            else:
+                res_tmp+=1
+            res = max(res,res_tmp)
+        return res
 
 12 feb, 2019
 
