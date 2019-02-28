@@ -69,7 +69,7 @@ Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 
 DEC 21
-        res = tmp_root = ListNode(0)
+        res = tmp_root = 7_ListNode(0)
         tmp_ten = 0
         while l1 or l2 or tmp_ten:
             tmp_1,tmp_2 = 0,0
@@ -80,11 +80,11 @@ DEC 21
                 tmp_2 = l2.val
                 l2 = l2.next
             tmp_ten,tmp_cur = divmod(tmp_ten+tmp_1+tmp_2,10)
-            tmp_root.next = ListNode(tmp_cur)
+            tmp_root.next = 7_ListNode(tmp_cur)
             tmp_root = tmp_root.next
         return res.next
 
-    # res = n = ListNode(0)
+    # res = n = 7_ListNode(0)
     # v_carry = 0
     # while l1 or l2:
     #     v1, v2 = 0, 0
@@ -95,7 +95,7 @@ DEC 21
     #         v2 = l2.val
     #         l2 = l2.next
     #     v_carry, tmp = divmod(v1 + v2 + v_carry, 10)
-    #     n.next = ListNode(tmp)
+    #     n.next = 7_ListNode(tmp)
     #     n = n.next
     # return res
 

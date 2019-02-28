@@ -55,8 +55,8 @@ The relative order inside both the even and odd groups should remain as it was i
 The first node is considered odd, the second node even and so on ...
 
 # 7 jan, 2019
-        res0 = odd = ListNode(0)
-        res1 = even = ListNode(0)
+        res0 = odd = 7_ListNode(0)
+        res1 = even = 7_ListNode(0)
         while head:
             odd.next = head
             even.next = head.next

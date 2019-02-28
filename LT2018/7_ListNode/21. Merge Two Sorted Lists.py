@@ -56,14 +56,14 @@ Output: 1->1->2->3->4->4
 
 dec 27
 
-        res = tmp = ListNode(0)
+        res = tmp = 7_ListNode(0)
         while l1 and l2:
             if l1.val < l2.val:
-                tmp.next = ListNode(l1.val)
+                tmp.next = 7_ListNode(l1.val)
                 tmp = tmp.next
                 l1 = l1.next
             else:
-                tmp.next = ListNode(l2.val)
+                tmp.next = 7_ListNode(l2.val)
                 tmp = tmp.next
                 l2 = l2.next
         tmp.next = l1 or l2
@@ -72,23 +72,23 @@ dec 27
 
 dec 19
 
-        res = tmp_root = ListNode(0)
+        res = tmp_root = 7_ListNode(0)
         while l1 or l2:
             if l1 and l2:
                 if l1.val <l2.val:
-                    tmp_root.next = ListNode(l1.val)
+                    tmp_root.next = 7_ListNode(l1.val)
                     tmp_root = tmp_root.next
                     l1 = l1.next
                 if l2:
-                    tmp_root.next = ListNode(l2.val)
+                    tmp_root.next = 7_ListNode(l2.val)
                     tmp_root = tmp_root.next
                     l2 = l2.next
             if l1:
-                tmp_root.next = ListNode(l1.val)
+                tmp_root.next = 7_ListNode(l1.val)
                 tmp_root = tmp_root.next
                 l1 = l1.next
             if l2:
-                tmp_root.next = ListNode(l2.val)
+                tmp_root.next = 7_ListNode(l2.val)
                 tmp_root = tmp_root.next
                 l2 = l2.next
         return res.next

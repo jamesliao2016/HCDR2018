@@ -92,7 +92,7 @@ DEC 26
 
 DEC 25
     
-            # res = ListNode(head.val)
+            # res = 7_ListNode(head.val)
         # head = head.next
         tmp = slow = head
 

@@ -74,13 +74,13 @@ Output: -1->0->3->4->5
 
 # 14 feb, 2019
         def mergeLN(l1,l2):
-            res = tmp = ListNode(0)
+            res = tmp = 7_ListNode(0)
             while l1 and l2:
                 if l1.val<l2.val:
-                    tmp.next = ListNode(l1.val)
+                    tmp.next = 7_ListNode(l1.val)
                     l1 = l1.next
                 else:
-                    tmp.next = ListNode(l2.val)
+                    tmp.next = 7_ListNode(l2.val)
                     l2 = l2.next
                 tmp = tmp.next
             tmp.next = l1 or l2
@@ -102,14 +102,14 @@ Output: -1->0->3->4->5
 
 # 13 feb, 2019
         def mergeList(l1,l2):
-            res = tmp = ListNode(0)
+            res = tmp = 7_ListNode(0)
             while l1 and l2:
                 if l1.val < l2.val:
-                    tmp.next = ListNode(l1.val)
+                    tmp.next = 7_ListNode(l1.val)
                     tmp = tmp.next
                     l1 = l1.next
                 else:
-                    tmp.next = ListNode(l2.val)
+                    tmp.next = 7_ListNode(l2.val)
                     tmp = tmp.next
                     l2 = l2.next
             tmp.next = l1 or l2
@@ -144,14 +144,14 @@ Output: -1->0->3->4->5
             return mergeList(l1,l2)
 
         def mergeList(l1,l2):
-            res = tmp = ListNode(0)
+            res = tmp = 7_ListNode(0)
             while l1 and l2:
                 if l1.val < l2.val:
-                    tmp.next = ListNode(l1.val)
+                    tmp.next = 7_ListNode(l1.val)
                     tmp = tmp.next
                     l1 = l1.next
                 else:
-                    tmp.next = ListNode(l2.val)
+                    tmp.next = 7_ListNode(l2.val)
                     tmp = tmp.next
                     l2 = l2.next
             tmp.next = l1 or l2
@@ -161,14 +161,14 @@ Output: -1->0->3->4->5
 
 # dec 30
         def mg(l,r):
-            res = tmp = ListNode(0)
+            res = tmp = 7_ListNode(0)
             while l and r:
                 if l.val > r.val:
-                    tmp.next = ListNode(r.val)
+                    tmp.next = 7_ListNode(r.val)
                     tmp = tmp.next
                     r = r.next
                 else:
-                    tmp.next = ListNode(l.val)
+                    tmp.next = 7_ListNode(l.val)
                     tmp = tmp.next
                     l = l.next
             tmp.next = l or r
