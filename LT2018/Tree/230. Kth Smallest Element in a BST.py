@@ -14,14 +14,14 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        res = []
-        def helper(root):
+        def helper(root,res=[]):
             if root:
-                helper(root.left)
+                helper(root.left,res)
                 res.append(root.val)
-                helper(root.right)
-        helper(root)
-        return res[k-1]
+                helper(root.right,res)
+        res = []
+        helper(root,res)
+        return res[-k]
 
 if __name__ == '__main__':
     dt_input = TreeNode(3)
@@ -58,7 +58,20 @@ Input: root = [5,3,6,2,4,null,null,1], k = 3
  1
 Output: 3
 Follow up:
-What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
+What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
+How would you optimize the kthSmallest routine?
+
+# 28 feb, 2019
+
+        res = []
+        def helper(root):
+            if root:
+                helper(root.left)
+                res.append(root.val)
+                helper(root.right)
+        helper(root)
+        return res[k-1]
+
 
 # 4 Jan, 2019
         res = []

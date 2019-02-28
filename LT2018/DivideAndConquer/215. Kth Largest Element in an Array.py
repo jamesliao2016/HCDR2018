@@ -24,9 +24,9 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        for i in range(len(nums)-1,len(nums) - k-1,-1):
+        for i in range(len(nums)-1,len(nums)-1-k,-1):
             for j in range(i):
-                if nums[i]< nums[j]:
+                if nums[i] < nums[j]:
                     nums[i], nums[j] = nums[j], nums[i]
         return nums[-k]
 
@@ -39,6 +39,13 @@ if __name__ == '__main__':
     print(output_y.findKthLargest(input_nums,input_k))
 
     '''
+    # 27 feb, 2019
+            for i in range(len(nums)-1,len(nums) - k-1,-1):
+            for j in range(i):
+                if nums[i]< nums[j]:
+                    nums[i], nums[j] = nums[j], nums[i]
+        return nums[-k]
+
     # 26 feb, 2019
             for i in range(len(nums)-1,len(nums) - k - 1,-1):
             for j in range(i):

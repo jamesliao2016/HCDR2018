@@ -6,7 +6,8 @@ class Solution:
         :type nums: List[int]
         :rtype: bool
         """
-        return not len(nums) == len(set(nums))
+
+
 if __name__ == '__main__':
     ipt = [1,1,1,3,3,4,3,2,4,2]
     print(Solution().containsDuplicate(ipt))
@@ -30,4 +31,7 @@ Example 3:
 
 Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
+
+# 27 feb, 2019
+return not len(nums) == len(set(nums))
 '''

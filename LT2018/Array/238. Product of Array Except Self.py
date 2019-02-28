@@ -8,18 +8,17 @@ class Solution:
         :type nums: List[int]
         :rtype: List[int]
         """
-        if not nums:
-            return []
-        res = [1]*len(nums)
-        p = nums[0]
+        l1 = [1]
+        tmp = 1
         for i in range(1,len(nums)):
-            res[i] = res[i]*p
-            p=p*nums[i]
-        p = nums[-1]
+            tmp = tmp * nums[i-1]
+            l1.append(tmp)
+        tmp = 1
         for i in range(len(nums)-2,-1,-1):
-            res[i] = res[i]*p
-            p = p * nums[i]
-        return res
+            tmp = tmp * nums[i+1]
+            l1[i]=*tmp
+        return l1
+
 
 if __name__ == '__main__':
     ipt = [1,2,3,4]
@@ -33,6 +32,20 @@ if __name__ == '__main__':
     Input:  [1,2,3,4]
     Output: [24,12,8,6]
     Note: Please solve it without division and in O(n).
+
+# 28 feb, 2019
+        if not nums:
+            return []
+        res = [1]*len(nums)
+        p = nums[0]
+        for i in range(1,len(nums)):
+            res[i] = res[i]*p
+            p=p*nums[i]
+        p = nums[-1]
+        for i in range(len(nums)-2,-1,-1):
+            res[i] = res[i]*p
+            p = p * nums[i]
+        return res
 
 # 5 Jan, 2019
         res = [1]*len(nums)
