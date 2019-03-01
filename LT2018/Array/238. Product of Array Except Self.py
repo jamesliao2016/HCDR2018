@@ -8,6 +8,29 @@ class Solution:
         :type nums: List[int]
         :rtype: List[int]
         """
+        res = [1] * len(nums)
+        for i in range(1,len(nums)):
+            res[i] = res[i] * nums[i-1]
+        for j in range(len(nums)-2,-1,-1):
+            res[j] = res[j] * nums[j+1]
+        return res
+
+
+if __name__ == '__main__':
+    ipt = [1,2,3,4]
+    print(Solution().productExceptSelf(ipt))
+
+    '''
+    Given an array nums of n integers where n > 1,  return an array output such that output[i] is 
+    equal to the product of all the elements of nums except nums[i].
+
+    Example:
+
+    Input:  [1,2,3,4]
+    Output: [24,12,8,6]
+    Note: Please solve it without division and in O(n).
+
+# 1 MAR, 2019
         l1 = [1]
         tmp = 1
         for i in range(1,len(nums)):
@@ -18,20 +41,6 @@ class Solution:
             tmp = tmp * nums[i+1]
             l1[i]=*tmp
         return l1
-
-
-if __name__ == '__main__':
-    ipt = [1,2,3,4]
-    print(Solution().productExceptSelf(ipt))
-
-    '''
-    Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
-
-    Example:
-
-    Input:  [1,2,3,4]
-    Output: [24,12,8,6]
-    Note: Please solve it without division and in O(n).
 
 # 28 feb, 2019
         if not nums:

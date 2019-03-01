@@ -21,7 +21,7 @@ class Solution:
                 helper(root.right,res)
         res = []
         helper(root,res)
-        return res[-k]
+        return res
 
 if __name__ == '__main__':
     dt_input = TreeNode(3)
@@ -60,6 +60,17 @@ Output: 3
 Follow up:
 What if the 5_BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
 How would you optimize the kthSmallest routine?
+
+# 1 mar, 2019
+        def helper(root,res=[]):
+            if root:
+                helper(root.left,res)
+                res.append(root.val)
+                helper(root.right,res)
+        res = []
+        helper(root,res)
+        return res[-k]
+
 
 # 28 feb, 2019
 
