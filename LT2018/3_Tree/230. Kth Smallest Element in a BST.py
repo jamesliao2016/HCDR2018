@@ -14,17 +14,18 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        stack =[]
+        stack = []
         while root or stack:
             while root:
                 stack.append(root)
                 root = root.left
             root = stack.pop()
-            k -= 1
+            k-=1
             if k<1:
                 return root.val
             else:
                 root = root.right
+
 
 if __name__ == '__main__':
     dt_input = TreeNode(3)
@@ -63,6 +64,20 @@ Output: 3
 Follow up:
 What if the 5_BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
 How would you optimize the kthSmallest routine?
+
+# 8 mar, 2019
+        stack =[]
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            k -= 1
+            if k<1:
+                return root.val
+            else:
+                root = root.right
+
 
 # 4 Mar, 2019
         def helper(root,res=[]):

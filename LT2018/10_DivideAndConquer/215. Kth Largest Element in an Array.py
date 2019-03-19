@@ -24,18 +24,20 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        pivot = nums[int((len(nums))/2)]
-        n1,n2 = [],[]
+        pivot = nums[int(len(nums)/2)]
+        n1=[];n2=[]
         for i in nums:
             if i>pivot:
                 n1.append(i)
-            if i<pivot:
+            elif i<pivot:
                 n2.append(i)
-        if k<=len(n1):
+        if len(n1)>=k:
             return self.findKthLargest(n1,k)
-        if k>len(nums) - len(n2):
-            return self.findKthLargest(n2,k - (len(nums) - len(n2)))
+        if len(n2)>=len(nums) - k:
+            return self.findKthLargest(n2,k-(len(nums) - len(n2)))
         return pivot
+
+
 
 if __name__ == '__main__':
     input_k = 2
@@ -47,6 +49,20 @@ if __name__ == '__main__':
     print(output_y.findKthLargest(input_nums,input_k))
 
     '''
+    # 5 MAR, 2019
+            pivot = nums[int((len(nums))/2)]
+        n1,n2 = [],[]
+        for i in nums:
+            if i>pivot:
+                n1.append(i)
+            if i<pivot:
+                n2.append(i)
+        if k<=len(n1):
+            return self.findKthLargest(n1,k)
+        if k>len(nums) - len(n2):
+            return self.findKthLargest(n2,k - (len(nums) - len(n2)))
+        return pivot
+        
     # 4 mar, 2019
             for i in range(len(nums)-1,len(nums)-1-k,-1):
             for j in range(i):
