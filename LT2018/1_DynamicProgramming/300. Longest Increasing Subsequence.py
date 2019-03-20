@@ -7,13 +7,11 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
-        if not nums:
-            return 0
         res = [1]*len(nums)
         for i in range(len(nums)-1,-1,-1):
-            for j in range(i+1,len(nums)):
-                if nums[i]<nums[j]:
-                    res[i] = max(res[i],res[j]+1)
+            for j in range(i,len(nums)):
+                if nums[j]>nums[i]:
+                    res[i] = max(res[i],1+res[j])
         return max(res)
 
 if __name__ == '__main__':
@@ -33,6 +31,34 @@ Note:
 There may be more than one LIS combination, it is only necessary for you to return the length.
 Your algorithm should run in O(n2) complexity.
 Follow up: Could you improve it to O(n log n) time complexity?
+
+# Best Solution
+
+    tails = [0] * len(nums)
+    size = 0
+    for x in nums:
+        i, j = 0, size
+        while i != j:
+            m = (i + j) / 2
+            if tails[m] < x:
+                i = m + 1
+            else:
+                j = m
+        tails[i] = x
+        size = max(i + 1, size)
+    return size
+
+
+# 20 mar, 2019
+        if not nums:
+            return 0
+        res = [1]*len(nums)
+        for i in range(len(nums)-1,-1,-1):
+            for j in range(i+1,len(nums)):
+                if nums[i]<nums[j]:
+                    res[i] = max(res[i],res[j]+1)
+        return max(res)
+
 
 # 7 jan, 2019
         if not nums:

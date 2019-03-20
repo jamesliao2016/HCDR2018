@@ -8,19 +8,19 @@ class Solution:
         :rtype: int
         """
         res = 0
-        lst = [n]
-        while lst:
+        tmp_lst = [n]
+        while tmp_lst:
+            tmp_nums = []
             res += 1
-
-            for n in lst:
-                tmp = []
-                i = 1
-                while i*i<=n:
-                    if i*i==n:
+            for i in tmp_lst:
+               j = 1
+                while j*j<=i:
+                    if j*j==i:
                         return res
-                    tmp.append(n - i*i)
-                    i+=1
-            lst = tmp
+                    tmp_nums.append(i - j*j)
+                    j+=1
+            tmp_lst = tmp_nums
+
 
 if __name__ == '__main__':
     ipt = 12
@@ -41,6 +41,23 @@ Example 2:
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
+
+# 20 MAR, 2019
+
+        res = 0
+        lst = [n]
+        while lst:
+            res += 1
+
+            for n in lst:
+                tmp = []
+                i = 1
+                while i*i<=n:
+                    if i*i==n:
+                        return res
+                    tmp.append(n - i*i)
+                    i+=1
+            lst = tmp
 
 # 19 mar, 2019
         res = 0
