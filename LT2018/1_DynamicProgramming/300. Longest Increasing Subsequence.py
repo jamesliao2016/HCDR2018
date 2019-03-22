@@ -7,12 +7,15 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
-        res = [1]*len(nums)
+        if not nums:
+            return 0
+        res = [1] * len(nums)
         for i in range(len(nums)-1,-1,-1):
             for j in range(i,len(nums)):
                 if nums[j]>nums[i]:
-                    res[i] = max(res[i],1+res[j])
+                    res[i] = max(res[i],(res[j]+1))
         return max(res)
+
 
 if __name__ == '__main__':
     ipt = [10,9,2,5,3,7,101,18]
