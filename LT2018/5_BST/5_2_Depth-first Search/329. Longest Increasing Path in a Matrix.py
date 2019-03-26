@@ -9,17 +9,17 @@ class Solution:
         """
         if not matrix or not matrix[0]:
             return 0
-        # res = [[1]*len(matrix[0])]*len(matrix)
         res = [[1]*len(matrix[0]) for i in range(len(matrix))]
+
         def dfs(i,j):
-            if res[i][j] == 1:
+            if res[i][j]==1:
                 tmp = matrix[i][j]
-                res[i][j] += max(dfs(i+1,j) if i+1 < len(matrix) and matrix[i+1][j]>tmp else 0,
-                                 dfs(i-1,j) if i-1 >= 0 and matrix[i-1][j] > tmp else 0,
-                                 dfs(i,j+1) if j+1 < len(matrix[0]) and matrix[i][j+1]>tmp else 0,
-                dfs(i,j-1) if j-1 >= 0 and matrix[i][j-1] > tmp else 0)
+                res[i][j]+= max(dfs(i+1,j) if i+1<len(matrix) and matrix[i+1][j]>tmp else 0,\
+                                dfs(i-1,j) if i-1>=0 and matrix[i-1][j]>tmp else 0,\
+                                dfs(i,j+1) if j+1<len(matrix[0]) and matrix[i][j+1]>tmp else 0,\
+                                dfs(i,j-1) if j-1>=0 and matrix[i][j-1]>tmp else 0)
             return res[i][j]
-        return max(dfs(i,j) for i in range(len(matrix)) for j in range(len(matrix[0])))
+        return max([dfs(i,j) for i in range(len(matrix)) for j in range(len(matrix[0]))])
 
 if __name__ == '__main__':
     ipt = [
@@ -57,6 +57,21 @@ Input: nums =
 ] 
 Output: 4 
 Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
+
+# 26 MAR, 2019
+        if not matrix or not matrix[0]:
+            return 0
+        # res = [[1]*len(matrix[0])]*len(matrix)
+        res = [[1]*len(matrix[0]) for i in range(len(matrix))]
+        def dfs(i,j):
+            if res[i][j] == 1:
+                tmp = matrix[i][j]
+                res[i][j] += max(dfs(i+1,j) if i+1 < len(matrix) and matrix[i+1][j]>tmp else 0,
+                                 dfs(i-1,j) if i-1 >= 0 and matrix[i-1][j] > tmp else 0,
+                                 dfs(i,j+1) if j+1 < len(matrix[0]) and matrix[i][j+1]>tmp else 0,
+                dfs(i,j-1) if j-1 >= 0 and matrix[i][j-1] > tmp else 0)
+            return res[i][j]
+        return max(dfs(i,j) for i in range(len(matrix)) for j in range(len(matrix[0])))
 
 # 22 mar, 2019
         if not matrix or not matrix[0]:

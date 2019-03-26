@@ -9,13 +9,12 @@ class Solution:
         """
         l,r = float('inf'),float('inf')
         for i in nums:
-            if l>=i:
-                l=i
-            else:
-                if r>=i:
-                    r=i
-                else:
-                    return True
+            if i<l:
+                l = i
+            if i>l and i<r:
+                r = i
+            if i>r:
+                return True
         return False
 
 if __name__ == '__main__':
@@ -40,6 +39,19 @@ Example 2:
 
 Input: [5,4,3,2,1]
 Output: false
+
+
+# 26 mar, 2019
+        l,r = float('inf'),float('inf')
+        for i in nums:
+            if l>=i:
+                l=i
+            else:
+                if r>=i:
+                    r=i
+                else:
+                    return True
+        return False
 
 # 8 jan, 2019
         l = r = float('inf')
