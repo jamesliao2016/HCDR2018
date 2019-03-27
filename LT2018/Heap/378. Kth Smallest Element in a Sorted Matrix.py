@@ -7,10 +7,11 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        res = []
+        stack = []
         for i in matrix:
-            res +=i
-        return sorted(res)[k-1]
+            stack = stack + i
+        stack.sort()
+        return stack[k-1]
 
 
 if __name__ == '__main__':
@@ -42,6 +43,13 @@ k = 8,
 return 13.
 Note: 
 You may assume k is always valid, 1 ≤ k ≤ n2.
+
+# 27 mar, 2019
+        res = []
+        for i in matrix:
+            res +=i
+        return sorted(res)[k-1]
+
 
 # 9 jan, 2019
         l=[]

@@ -13,7 +13,7 @@ class Solution:
                 l = i
             if i>l and i<r:
                 r = i
-            if i>r:
+            if i > r:
                 return True
         return False
 
@@ -39,6 +39,17 @@ Example 2:
 
 Input: [5,4,3,2,1]
 Output: false
+
+# 27 MAR, 2019
+        l,r = float('inf'),float('inf')
+        for i in nums:
+            if i<l:
+                l = i
+            if i>l and i<r:
+                r = i
+            if i>r:
+                return True
+        return False
 
 
 # 26 mar, 2019
