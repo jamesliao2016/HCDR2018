@@ -44,6 +44,14 @@ return 13.
 Note: 
 You may assume k is always valid, 1 ≤ k ≤ n2.
 
+# 28 mar, 2019
+
+        stack = []
+        for i in matrix:
+            stack = stack + i
+        stack.sort()
+        return stack[k-1]
+
 # 27 mar, 2019
         res = []
         for i in matrix:

@@ -8,13 +8,17 @@ class Solution(object):
         :rtype: void Do not return anything, modify nums in-place instead.
         """
         if k>len(nums):
-            k = k % len(nums)
-        for i in range(k):
-            nums[0],nums[1:] = nums[-1],nums[:-1]
-        return nums
+            k = k%len(nums)
+        if k >0:
+            tmp0 = nums[-k:]
+            tmp1 = nums[:-k]
+            nums[:k] = tmp0
+            nums[k:] = tmp1
 
 if __name__ == '__main__':
-    nums = [1,2,3,4,5,6,7]; k = 3
+    # nums = [1,2,3,4,5,6,7]; k = 3
+    nums = [1];
+    k = 0
     print(Solution().rotate(nums,k))
 
     '''
@@ -39,6 +43,23 @@ Note:
 
 Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
 Could you do it in-place with O(1) extra space?
+
+# 1 apr, 2019
+        # if k>0:
+        if k>len(nums):
+            k = k%len(nums)
+        tmp0 = nums[:-k]
+        tmp1 = nums[-k:]
+        nums[:k]=tmp1
+        nums[k:]=tmp0
+        return nums
+
+# 29 mar, 2019
+        if k>len(nums):
+            k = k % len(nums)
+        for i in range(k):
+            nums[0],nums[1:] = nums[-1],nums[:-1]
+        return nums
 
 # 20 feb, 2019
         if k>len(nums):

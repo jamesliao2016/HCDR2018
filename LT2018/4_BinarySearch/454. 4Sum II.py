@@ -9,19 +9,19 @@ class Solution:
         :type D: List[int]
         :rtype: int
         """
-        res = {}
-        cnt = 0
+        tmp_dict = {}
+        res = 0
         for i in A:
             for j in B:
-                if (i+j) not in res:
-                    res[(i+j)]=1
+                if (i+j) not in tmp_dict:
+                    tmp_dict[(i+j)] = 1
                 else:
-                    res[(i + j)] += 1
-        for k in C:
-            for l in D:
-                if -(k+l) in res:
-                    cnt+=res[(k+l)]
-        return cnt
+                    tmp_dict[(i + j)] += 1
+        for i in C:
+            for j in D:
+                if -(i+j) in tmp_dict:
+                    res += tmp_dict[-(i+j)]
+        return res
 
 
 if __name__ == '__main__':
@@ -53,6 +53,22 @@ Explanation:
 The two tuples are:
 1. (0, 0, 0, 1) -> A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0
 2. (1, 1, 0, 0) -> A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0
+
+# 28 MAR, 2019
+
+        res = {}
+        cnt = 0
+        for i in A:
+            for j in B:
+                if (i+j) not in res:
+                    res[(i+j)]=1
+                else:
+                    res[(i + j)] += 1
+        for k in C:
+            for l in D:
+                if -(k+l) in res:
+                    cnt+=res[(k+l)]
+        return cnt
 
 # 27 mar, 2019
         res = {}

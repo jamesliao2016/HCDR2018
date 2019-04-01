@@ -10,12 +10,13 @@ class Solution:
                 res = s[i:j+1]
                 i-=1;j+=1
             return res
+
         res = ''
         for i in range(len(s)):
-            tmp0= helper(i,i)
+            tmp0 = helper(i,i)
             tmp1 = helper(i,i+1)
-            tmp0 = tmp1 if len(tmp1)>len(tmp0) else tmp0
-            res = tmp0 if len(tmp0)>len(res) else res
+            tmp = tmp0 if len(tmp0)>len(tmp1) else tmp1
+            res = tmp if len(tmp)>len(res) else res
         return res
 
 if __name__ == '__main__':
@@ -40,6 +41,21 @@ Output: "bb"
     '''
 
     '''
+    # 1 apr, 2019
+            def helper(i,j):
+            res = ''
+            while i>=0 and j<len(s) and s[i]==s[j]:
+                res = s[i:j+1]
+                i-=1;j+=1
+            return res
+        res = ''
+        for i in range(len(s)):
+            tmp0= helper(i,i)
+            tmp1 = helper(i,i+1)
+            tmp0 = tmp1 if len(tmp1)>len(tmp0) else tmp0
+            res = tmp0 if len(tmp0)>len(res) else res
+        return res
+
 # 11 jan, 2019
 
         def helper(i,j):

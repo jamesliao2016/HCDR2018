@@ -7,6 +7,93 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
+        lst_take = [0]*numCourses
+        lst_pre = [[] for i in range(numCourses)]
+        for i in prerequisites:
+            idx = i[0]
+            lst_tmp = i[1:]
+            lst_pre[idx] = lst_pre[idx] + lst_tmp
+
+        def dfs(i):
+            if lst_take[i]==-1:
+                return False
+            if lst_take[i] == 1:
+                return True
+            lst_take[i] = -1
+            for j in lst_pre[i]:
+                if not dfs(j):
+                    return False
+            lst_take[i]=1
+            return True
+
+        for i in range(numCourses):
+            if not dfs(i):
+                return False
+        return True
+
+
+
+if __name__ == '__main__':
+
+    cn = 2; ipt = [[1,0],[0,1]]
+    # cn = 2; ipt = [[1,0]]
+    # cn = 2;    ipt = [[0, 1]]
+    # cn = 3; ipt = [[1, 0], [2, 1]]
+    # cn = 3;ipt = [[0,1],[0,2],[1,0]]
+    # cn = 3;    ipt = [[0, 1], [0, 2], [1, 2]]
+    # cn = 3;    ipt = [[1, 0], [0, 1], [1, 2]]
+    print(Solution().canFinish(cn,ipt))
+
+    '''
+    There are a total of n courses you have to take, labeled from 0 to n-1.
+
+Some courses may have prerequisites, for example to take course 0 you have to first take course 1, 
+which is expressed as a pair: [0,1]
+
+Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?
+
+Example 1:
+
+Input: 2, [[1,0]] 
+Output: true
+Explanation: There are a total of 2 courses to take. 
+             To take course 1 you should have finished course 0. So it is possible.
+Example 2:
+
+Input: 2, [[1,0],[0,1]]
+Output: false
+Explanation: There are a total of 2 courses to take. 
+             To take course 1 you should have finished course 0, and to take course 0 you should
+             also have finished course 1. So it is impossible.
+Note:
+
+The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
+You may assume that there are no duplicate edges in the input prerequisites.
+
+# 1 apr, 2019
+        taking = [0]*numCourses
+        lst_pre = [[] for i in range(numCourses)]
+        for i in prerequisites:
+            idx = i[0]
+            tmp = i[1:]
+            lst_pre[idx] = lst_pre[idx]+tmp
+        def dfs(i):
+            if taking[i]==-1:
+                return False
+            if taking[i]==1:
+                return True
+            taking[i]=-1
+            for j in lst_pre[i]:
+                if not dfs(j):
+                    return False
+            taking[i]=1
+            return True
+        for i in range(numCourses):
+            if not dfs(i):
+                return False
+        return True
+
+# 29 mar, 2019
         visit = [0] * numCourses
         must = [[]]*numCourses
         for i in prerequisites:
@@ -29,43 +116,6 @@ class Solution(object):
             if not dfs(i):
                 return False
         return True
-
-
-if __name__ == '__main__':
-
-    cn = 2; ipt = [[1,0],[0,1]]
-    # cn = 2; ipt = [[1,0]]
-    # cn = 2;    ipt = [[0, 1]]
-    # cn = 3; ipt = [[1, 0], [2, 1]]
-    # cn = 3;ipt = [[0,1],[0,2],[1,0]]
-    # cn = 3;    ipt = [[0, 1], [0, 2], [1, 2]]
-    # cn = 3;    ipt = [[1, 0], [0, 1], [1, 2]]
-    print(Solution().canFinish(cn,ipt))
-
-    '''
-    There are a total of n courses you have to take, labeled from 0 to n-1.
-
-Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
-
-Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?
-
-Example 1:
-
-Input: 2, [[1,0]] 
-Output: true
-Explanation: There are a total of 2 courses to take. 
-             To take course 1 you should have finished course 0. So it is possible.
-Example 2:
-
-Input: 2, [[1,0],[0,1]]
-Output: false
-Explanation: There are a total of 2 courses to take. 
-             To take course 1 you should have finished course 0, and to take course 0 you should
-             also have finished course 1. So it is impossible.
-Note:
-
-The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
-You may assume that there are no duplicate edges in the input prerequisites.
 
 # 26 feb, 2019
         visit = [0]*numCourses
