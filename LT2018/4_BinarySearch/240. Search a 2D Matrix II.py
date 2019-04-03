@@ -8,15 +8,17 @@ class Solution:
         :type target: int
         :rtype: bool
         """
-        l,r = 0,len(matrix[0])-1
-        while l>=0 and l<len(matrix) and r>=0 and r<len(matrix[0]):
-            if matrix[l][r] == target:
+        if not matrix or not matrix[0]:
+            return False
+        i,j = 0,len(matrix[0])-1
+        while i>=0 and i<len(matrix) and j>=0 and j<len(matrix[0]):
+            if matrix[i][j] == target:
                 return True
             else:
-                if matrix[l][r] > target:
-                    r-=1
+                if matrix[i][j] > target:
+                    j-=1
                 else:
-                    l+=1
+                    i+=1
         return False
 
 if __name__ == '__main__':
@@ -51,6 +53,18 @@ Consider the following matrix:
 Given target = 5, return true.
 
 Given target = 20, return false.
+
+# 3 apr, 2019
+        l,r = 0,len(matrix[0])-1
+        while l>=0 and l<len(matrix) and r>=0 and r<len(matrix[0]):
+            if matrix[l][r] == target:
+                return True
+            else:
+                if matrix[l][r] > target:
+                    r-=1
+                else:
+                    l+=1
+        return False
 
 # 19 mar, 2019
         if len(matrix)==0:

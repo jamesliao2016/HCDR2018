@@ -9,11 +9,12 @@ class Solution:
         """
         if not nums:
             return 0
-        res = [1] * len(nums)
+        res = [1]*len(nums)
         for i in range(len(nums)-1,-1,-1):
+            tmp = nums[i]
             for j in range(i,len(nums)):
-                if nums[j]>nums[i]:
-                    res[i] = max(res[i],(res[j]+1))
+                if nums[j]>tmp:
+                    res[i] = max(res[i],1+res[j])
         return max(res)
 
 
@@ -51,6 +52,16 @@ Follow up: Could you improve it to O(n log n) time complexity?
         size = max(i + 1, size)
     return size
 
+
+# 3 apr, 2019
+        if not nums:
+            return 0
+        res = [1] * len(nums)
+        for i in range(len(nums)-1,-1,-1):
+            for j in range(i,len(nums)):
+                if nums[j]>nums[i]:
+                    res[i] = max(res[i],(res[j]+1))
+        return max(res)
 
 # 20 mar, 2019
         if not nums:

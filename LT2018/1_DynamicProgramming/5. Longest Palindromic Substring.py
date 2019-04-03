@@ -4,13 +4,14 @@ class Solution:
         :type s: str
         :rtype: str
         """
+
         def helper(i,j):
             res = ''
-            while i>=0 and j<len(s) and s[i]==s[j]:
-                res = s[i:j+1]
+            while i>=0 and j<len(s) and s[i] == s[j]:
+                res = s[i:j + 1]
                 i-=1;j+=1
-            return res
 
+            return res
         res = ''
         for i in range(len(s)):
             tmp0 = helper(i,i)
@@ -41,6 +42,22 @@ Output: "bb"
     '''
 
     '''
+    # 2 apr, 2019
+            def helper(i,j):
+            res = ''
+            while i>=0 and j<len(s) and s[i]==s[j]:
+                res = s[i:j+1]
+                i-=1;j+=1
+            return res
+
+        res = ''
+        for i in range(len(s)):
+            tmp0 = helper(i,i)
+            tmp1 = helper(i,i+1)
+            tmp = tmp0 if len(tmp0)>len(tmp1) else tmp1
+            res = tmp if len(tmp)>len(res) else res
+        return res
+
     # 1 apr, 2019
             def helper(i,j):
             res = ''

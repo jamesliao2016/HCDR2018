@@ -10,7 +10,6 @@ class Solution:
         for i in nums:
             tmp = []
             for j in res:
-
                 for k in range(len(j)+1):
                     tmp.append(j[k:]+[i]+j[:k])
             res = tmp
@@ -36,6 +35,28 @@ Output:
   [3,1,2],
   [3,2,1]
 ]
+
+# 3 apr, 2019
+        res = [[]]
+        for i in nums:
+            tmp = []
+            for j in res:
+                for k in range(len(j)+1):
+                    tmp.append(j[k:-1]+[i]+j[:k])
+            res = tmp
+        return res
+
+# 2 apr,2019
+        res = [[]]
+        for i in nums:
+            tmp = []
+            for j in res:
+
+                for k in range(len(j)+1):
+                    tmp.append(j[k:]+[i]+j[:k])
+            res = tmp
+        return res
+
 
     5 dec
             res = [[]]
