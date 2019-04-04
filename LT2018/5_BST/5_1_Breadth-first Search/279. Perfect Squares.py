@@ -8,18 +8,19 @@ class Solution:
         :rtype: int
         """
         res = 0
-        tmp_lst = [n]
-        while tmp_lst:
-            tmp_nums = []
+        lst_dfs = [n]
+        while lst_dfs:
+            tmp_dfs = []
             res += 1
-            for i in tmp_lst:
-               j = 1
-                while j*j<=i:
-                    if j*j==i:
+            for i in lst_dfs:
+                j = 1
+                while j * j <= i:
+                    tmp = i - j * j
+                    if tmp == 0:
                         return res
-                    tmp_nums.append(i - j*j)
+                    tmp_dfs.append(tmp)
                     j+=1
-            tmp_lst = tmp_nums
+            lst_dfs = tmp_dfs
 
 
 if __name__ == '__main__':
@@ -41,6 +42,21 @@ Example 2:
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
+
+# 4 APR, 2019
+        res = 0
+        tmp_lst = [n]
+        while tmp_lst:
+            tmp_nums = []
+            res += 1
+            for i in tmp_lst:
+               j = 1
+                while j*j<=i:
+                    if j*j==i:
+                        return res
+                    tmp_nums.append(i - j*j)
+                    j+=1
+            tmp_lst = tmp_nums
 
 # 20 MAR, 2019
 

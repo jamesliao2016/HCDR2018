@@ -10,15 +10,15 @@ class Solution:
         """
         if not matrix or not matrix[0]:
             return False
-        i,j = 0,len(matrix[0])-1
+        i,j = len(matrix)-1,0
         while i>=0 and i<len(matrix) and j>=0 and j<len(matrix[0]):
             if matrix[i][j] == target:
                 return True
             else:
                 if matrix[i][j] > target:
-                    j-=1
+                    i-=1
                 else:
-                    i+=1
+                    j+=1
         return False
 
 if __name__ == '__main__':
@@ -53,6 +53,20 @@ Consider the following matrix:
 Given target = 5, return true.
 
 Given target = 20, return false.
+
+# 4 apr, 2019
+        if not matrix or not matrix[0]:
+            return False
+        i,j = 0,len(matrix[0])-1
+        while i>=0 and i<len(matrix) and j>=0 and j<len(matrix[0]):
+            if matrix[i][j] == target:
+                return True
+            else:
+                if matrix[i][j] > target:
+                    j-=1
+                else:
+                    i+=1
+        return False
 
 # 3 apr, 2019
         l,r = 0,len(matrix[0])-1
