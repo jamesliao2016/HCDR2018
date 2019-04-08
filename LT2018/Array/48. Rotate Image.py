@@ -53,4 +53,8 @@ rotate the input matrix in-place such that it becomes:
   [12, 6, 8, 9],
   [16, 7,10,11]
 ]
+
+# 8 apr, 2019
+        matrix[:] = zip(*matrix[::-1])
+
     '''

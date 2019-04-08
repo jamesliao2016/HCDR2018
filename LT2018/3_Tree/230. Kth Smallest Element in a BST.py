@@ -65,6 +65,19 @@ Follow up:
 What if the 5_BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
 How would you optimize the kthSmallest routine?
 
+# 8 apr, 2019
+        stack = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            k-=1
+            if k<1:
+                return root.val
+            else:
+                root = root.right
+
 # 8 mar, 2019
         stack =[]
         while root or stack:
