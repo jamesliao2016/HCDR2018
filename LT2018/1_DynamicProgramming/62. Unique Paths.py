@@ -10,7 +10,7 @@ class Solution:
         aux = [[1]*n for _ in range(m)]
         for i in range(1,m):
             for j in range(1,n):
-                aux[i][j] = aux[i-1][j]+aux[i][j-1]
+                aux[i][j] = aux[i-1][j] + aux[i][j-1]
         return aux[-1][-1]
 
 if __name__ == '__main__':
@@ -47,6 +47,13 @@ Example 2:
 
 Input: m = 7, n = 3
 Output: 28
+
+# 9 apr, 2019
+        aux = [[1]*n for _ in range(m)]
+        for i in range(1,m):
+            for j in range(1,n):
+                aux[i][j] = aux[i-1][j]+aux[i][j-1]
+        return aux[-1][-1]
 
 # 8 apr, 2019
         aux = [[1]*n for _ in range(m)]
