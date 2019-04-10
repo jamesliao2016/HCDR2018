@@ -9,35 +9,30 @@ class Solution:
         :type head: ListNode
         :rtype: ListNode
         """
-
         def mergeList(l1,l2):
             res = tmp = ListNode(0)
             while l1 and l2:
-                if l1.val<l2.val:
-                    tmp.next = ListNode(l1.val)
-                    tmp = tmp.next
+                if l1.val < l2.val:
+                    tmp_val = l1.val
                     l1 = l1.next
                 else:
-                    tmp.next = ListNode(l2.val)
-                    tmp = tmp.next
+                    tmp_val = l2.val
                     l2 = l2.next
+                tmp.next = ListNode(tmp_val)
+                tmp = tmp.next
             tmp.next = l1 or l2
             return res.next
-        if not head:
-            return None
-        if head:
-            if not head.next:
-                return head
-            else:
-                f,s = head.next,head
-                while f and f.next:
-                    s = s.next
-                    f = f.next.next
-                tail = s.next
-                s.next = None
-                l1 = self.sortList(head)
-                l2 = self.sortList(tail)
-                return mergeList(l1,l2)
+        if not head or not head.next:
+            return head
+        f,s = head.next,head
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+        tail = s.next
+        s.next = None
+        l1 = self.sortList(head)
+        l2 = self.sortList(tail)
+        return mergeList(l1,l2)
 
 
 
@@ -77,6 +72,38 @@ Example 2:
 
 Input: -1->5->3->4->0
 Output: -1->0->3->4->5
+
+# 10 apr, 2019
+
+        def mergeList(l1,l2):
+            res = tmp = ListNode(0)
+            while l1 and l2:
+                if l1.val<l2.val:
+                    tmp.next = ListNode(l1.val)
+                    tmp = tmp.next
+                    l1 = l1.next
+                else:
+                    tmp.next = ListNode(l2.val)
+                    tmp = tmp.next
+                    l2 = l2.next
+            tmp.next = l1 or l2
+            return res.next
+        if not head:
+            return None
+        if head:
+            if not head.next:
+                return head
+            else:
+                f,s = head.next,head
+                while f and f.next:
+                    s = s.next
+                    f = f.next.next
+                tail = s.next
+                s.next = None
+                l1 = self.sortList(head)
+                l2 = self.sortList(tail)
+                return mergeList(l1,l2)
+
 
 # 9 apr, 2019
     def mergeLN(self,l1, l2):

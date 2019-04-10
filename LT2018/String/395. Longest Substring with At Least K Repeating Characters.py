@@ -8,14 +8,14 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        for i in list(set(s)):
+        for i in set(s):
             if s.count(i)<k:
                 return max([self.longestSubstring(j,k) for j in s.split(i)])
         return len(s)
 
 if __name__ == '__main__':
-    # s = "aaabb"; k = 3
-    s = "ababbc"; k = 2
+    s = "aaabb"; k = 3
+    # s = "ababbc"; k = 2
     print(Solution().longestSubstring(s,k))
 
     '''
@@ -40,6 +40,12 @@ Output:
 5
 
 The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+
+# 10 apr, 2019
+        for i in list(set(s)):
+            if s.count(i)<k:
+                return max([self.longestSubstring(j,k) for j in s.split(i)])
+        return len(s)
 
 # 28 mar, 2019
 

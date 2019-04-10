@@ -7,10 +7,11 @@ class Solution:
         :type s: str
         :rtype: List[List[str]]
         """
-        return [[s[:idx+1]] + tmp\
+        return [[s[:idx+1]] + tmp \
                 for idx in range(len(s))\
-                if s[:idx+1] == s[:idx+1][::-1]\
-                for tmp in self.partition(s[idx+1:])] or [[]]
+                if s[:idx+1]==s[:idx+1][::-1]\
+                for tmp in self.partition(s[idx+1:])]\
+    or [[]]
 
 if __name__ == '__main__':
     ipt ="aab"
@@ -34,6 +35,12 @@ Output:
 
 
 
+
+# 10 apr, 2019
+        return [[s[:idx+1]] + tmp\
+                for idx in range(len(s))\
+                if s[:idx+1] == s[:idx+1][::-1]\
+                for tmp in self.partition(s[idx+1:])] or [[]]
 
 # 9 apr, 2019
         return [[s[:idx+1]] + tmp \
