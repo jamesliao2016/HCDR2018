@@ -10,7 +10,7 @@ class Solution:
         """
         for i in set(s):
             if s.count(i)<k:
-                return max([self.longestSubstring(j,k) for j in s.split(i)])
+                return max([self.longestSubstring(tmp,k) for tmp in s.split(i)])
         return len(s)
 
 if __name__ == '__main__':
@@ -40,6 +40,12 @@ Output:
 5
 
 The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+
+# 11 apr, 2019
+        for i in set(s):
+            if s.count(i)<k:
+                return max([self.longestSubstring(j,k) for j in s.split(i)])
+        return len(s)
 
 # 10 apr, 2019
         for i in list(set(s)):

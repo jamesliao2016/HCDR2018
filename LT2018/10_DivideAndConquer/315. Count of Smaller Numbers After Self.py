@@ -7,19 +7,21 @@ class Solution:
         :type nums: List[int]
         :rtype: List[int]
         """
-        def mergeSmall(lst,res):
+        lst = list(enumerate(nums))
+        res = [0]*len(nums)
+        def divCon(lst,res):
             mid = int(len(lst)/2)
             if mid:
-                l,r = mergeSmall(lst[:mid],res),mergeSmall(lst[mid:],res)
+                l,r = divCon(lst[:mid],res),divCon(lst[mid:],res)
                 for i in range(len(lst))[::-1]:
                     if not r or (l and l[-1][1]>r[-1][1]):
-                        res[l[-1][0]] += len(r)
+                        res[l[-1][0]]+=len(r)
                         lst[i] = l.pop()
                     else:
                         lst[i] = r.pop()
-                return lst
-        res = [0]*len(nums)
-        mergeSmall(list(enumerate(nums)),res)
+            return lst
+
+        divCon(lst,res)
         return res
 
 
@@ -46,6 +48,22 @@ To the right of 1 there is 0 smaller element.
 
 
 
+
+# 11 apr, 2019
+        def mergeSmall(lst,res):
+            mid = int(len(lst)/2)
+            if mid:
+                l,r = mergeSmall(lst[:mid],res),mergeSmall(lst[mid:],res)
+                for i in range(len(lst))[::-1]:
+                    if not r or (l and l[-1][1]>r[-1][1]):
+                        res[l[-1][0]] += len(r)
+                        lst[i] = l.pop()
+                    else:
+                        lst[i] = r.pop()
+                return lst
+        res = [0]*len(nums)
+        mergeSmall(list(enumerate(nums)),res)
+        return res
 
 # 10 apr, 2019
         def mg(lst):
