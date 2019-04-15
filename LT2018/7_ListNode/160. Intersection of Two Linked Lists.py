@@ -13,7 +13,7 @@ class Solution(object):
         :rtype: ListNode
         """
         pa,pb = headA,headB
-        while pa is not pb:
+        while pa!=pb:
             pa = headB if not pa else pa.next
             pb = headA if not pb else pb.next
         return pa
@@ -77,6 +77,13 @@ If the two linked lists have no intersection at all, return null.
 The linked lists must retain their original structure after the function returns.
 You may assume there are no cycles anywhere in the entire linked structure.
 Your code should preferably run in O(n) time and use only O(1) memory.
+
+# 15 APR, 2019
+        pa,pb = headA,headB
+        while pa is not pb:
+            pa = headB if not pa else pa.next
+            pb = headA if not pb else pb.next
+        return pa
 
 # 11 apr, 2019
         pa,pb = headA,headB

@@ -12,7 +12,7 @@ class Solution:
         for i in range(1<<len(nums)):
             tmp = []
             for j in range(len(nums)):
-                if (i&(1<<j)):
+                if i & (1<<j):
                     tmp.append(nums[j])
             res.append(tmp)
         return res
@@ -42,6 +42,16 @@ Output:
     '''
 
     '''
+# 15 apr, 2019
+        res = []
+        for i in range(1<<len(nums)):
+            tmp = []
+            for j in range(len(nums)):
+                if (i&(1<<j)):
+                    tmp.append(nums[j])
+            res.append(tmp)
+        return res
+    
     # 5 dec
             res = []
         for i in range(1<<len(nums)):
