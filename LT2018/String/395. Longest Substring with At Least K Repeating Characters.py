@@ -41,6 +41,12 @@ Output:
 
 The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
 
+# 16 apr, 2019
+        for i in set(s):
+            if s.count(i)<k:
+                return max([self.longestSubstring(tmp,k) for tmp in s.split(i)])
+        return len(s)
+
 # 15 apr, 2019
         for i in set(s):
             if s.count(i)<k:

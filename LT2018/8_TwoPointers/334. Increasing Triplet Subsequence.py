@@ -11,15 +11,17 @@ class Solution:
         for i in nums:
             if i<l:
                 l = i
-            if i>l and i<r:
+            if i<r and i>l:
                 r = i
-            if i > r:
+            if i>r:
                 return True
         return False
 
 if __name__ == '__main__':
-    ipt = [1,2,3,4,5]
+    # ipt = [1,2,3,4,5]
     # ipt = [5,4,3,2,1]
+    # ipt = [1,2,-1,5,7]
+    ipt = [1,2,-1,-5,-3,-2]
     print(Solution().increasingTriplet(ipt))
 
     '''
@@ -39,6 +41,28 @@ Example 2:
 
 Input: [5,4,3,2,1]
 Output: false
+
+# 17 APR, 2019
+        l,r = float('inf'),float('inf')
+        for i in nums:
+            if i<l:
+                l = i
+            if i<r and i>l:
+                r = i
+            if i>r:
+                return True
+        return False
+
+# 16 apr, 2019
+        l,r = float('inf'),float('inf')
+        for i in nums:
+            if i<l:
+                l = i
+            if i>l and i<r:
+                r = i
+            if i > r:
+                return True
+        return False
 
 # 27 MAR, 2019
         l,r = float('inf'),float('inf')

@@ -7,22 +7,22 @@ class Solution:
         :type nums: List[int]
         :rtype: List[int]
         """
-        lst = list(enumerate(nums))
         res = [0]*len(nums)
-        def divCon(lst,res):
+        lst = list(enumerate(nums))
+        def dc(lst,res):
             mid = int(len(lst)/2)
             if mid:
-                l,r = divCon(lst[:mid],res),divCon(lst[mid:],res)
+                l,r = dc(lst[:mid],res),dc(lst[mid:],res)
                 for i in range(len(lst))[::-1]:
                     if not r or (l and l[-1][1]>r[-1][1]):
                         res[l[-1][0]]+=len(r)
-                        lst[i] = l.pop()
+                        lst[i]=l.pop()
                     else:
-                        lst[i] = r.pop()
+                        lst[i]=r.pop()
             return lst
-
-        divCon(lst,res)
+        dc(lst,res)
         return res
+
 
 
 if __name__ == '__main__':
@@ -48,6 +48,24 @@ To the right of 1 there is 0 smaller element.
 
 
 
+
+# 17 apr, 2019
+        lst = list(enumerate(nums))
+        res = [0]*len(nums)
+        def divCon(lst,res):
+            mid = int(len(lst)/2)
+            if mid:
+                l,r = divCon(lst[:mid],res),divCon(lst[mid:],res)
+                for i in range(len(lst))[::-1]:
+                    if not r or (l and l[-1][1]>r[-1][1]):
+                        res[l[-1][0]]+=len(r)
+                        lst[i] = l.pop()
+                    else:
+                        lst[i] = r.pop()
+            return lst
+
+        divCon(lst,res)
+        return res
 
 # 11 apr, 2019
         def mergeSmall(lst,res):

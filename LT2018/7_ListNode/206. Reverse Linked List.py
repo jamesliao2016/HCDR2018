@@ -14,14 +14,13 @@ class Solution:
         :type head: ListNode
         :rtype: ListNode
         """
-        tmp = None
+        res = None
         while head:
-            tmp_h = head.next
-            head.next = tmp
             tmp = head
-            head = tmp_h
-
-        return tmp
+            head = head.next
+            tmp.next = res
+            res = tmp
+        return res
 
 if __name__ == '__main__':
     # l1=7_ListNode(-1)
@@ -46,6 +45,26 @@ if __name__ == '__main__':
         zz=zz.next
 
 '''
+Reverse a singly linked list.
+
+Example:
+
+Input: 1->2->3->4->5->NULL
+Output: 5->4->3->2->1->NULL
+Follow up:
+
+A linked list can be reversed either iteratively or recursively. Could you implement both?
+
+# 18 APR, 2019
+        tmp = None
+        while head:
+            tmp_h = head.next
+            head.next = tmp
+            tmp = head
+            head = tmp_h
+
+        return tmp
+
 # dec 4
 
         # tmp_r = 7_ListNode(head.val)

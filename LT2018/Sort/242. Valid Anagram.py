@@ -12,7 +12,7 @@ class Solution:
         :type t: str
         :rtype: bool
         """
-        return sorted(s)==sorted(t)
+        return sorted(s) == sorted(t)
 
 
 if __name__ == '__main__':
@@ -20,3 +20,9 @@ if __name__ == '__main__':
     s = "rat"; t = "car"
 
     print(Solution().isAnagram(s,t))
+
+'''
+# 16 apr, 2019
+        return sorted(s)==sorted(t)
+
+'''

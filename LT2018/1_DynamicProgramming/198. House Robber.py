@@ -7,14 +7,17 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
-        l,r = 0,0
-        for i in nums:
-            l,r = r,max(r,l+i)
-        return r
+        if not nums:
+            return 0
+        if len(nums)>=3:
+            for i in range(2,len(nums),1):
+                nums[i] += max(nums[:i-1])
+        return max(nums)
 
 if __name__ == '__main__':
     # ipt = [1,2,3,1]
-    ipt = [2,7,9,3,1]
+    # ipt = [2,7,9,3,1]
+    ipt = [2,1,1,2]
     print(Solution().rob(ipt))
 
     '''
@@ -39,6 +42,12 @@ Input: [2,7,9,3,1]
 Output: 12
 Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
              Total amount you can rob = 2 + 9 + 1 = 12.
+
+# 19 apr, 2019
+        l,r = 0,0
+        for i in nums:
+            l,r = r,max(r,l+i)
+        return r
     
 # 20 feb, 2019
         l,r = 0,0
