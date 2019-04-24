@@ -7,20 +7,21 @@ class Solution:
         :type n: int
         :rtype: int
         """
+        if not n:
+            return 0
         res = 0
-        lst_sum = [n]
-        while lst_sum:
-            lst_tmp = []
+        lst = [n]
+        while lst:
+            tmp = []
             res += 1
-            for i in lst_sum:
+            for i in lst:
                 j = 1
-                while j*j <= i:
-                    tmp0 = i - j*j
-                    if tmp0 == 0:
+                while j*j<=i:
+                    if j*j == i:
                         return res
-                    lst_tmp.append(tmp0)
-                    j+=1
-            lst_sum = lst_tmp
+                    tmp.append((i-j*j))
+                    j += 1
+            lst = tmp
 
 
 if __name__ == '__main__':
@@ -42,6 +43,22 @@ Example 2:
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
+
+# 24 apr, 2019
+        res = 0
+        lst_sum = [n]
+        while lst_sum:
+            lst_tmp = []
+            res += 1
+            for i in lst_sum:
+                j = 1
+                while j*j <= i:
+                    tmp0 = i - j*j
+                    if tmp0 == 0:
+                        return res
+                    lst_tmp.append(tmp0)
+                    j+=1
+            lst_sum = lst_tmp
 
 # 8 apr, 2019
         res = 0
