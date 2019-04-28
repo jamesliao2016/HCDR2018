@@ -20,10 +20,10 @@ class Solution:
         """
         res = []
         tmp = [root]
-        while tmp and root:
+        while root and tmp:
             res.append([i.val for i in tmp])
-            ir = [[i.left,i.right] for i in tmp]
-            tmp = [leaf for i in ir for leaf in i if leaf]
+            tmp0 = [[i.left,i.right] for i in tmp]
+            tmp = [i for j in tmp0 for i in j if i]
         return res
 
 if __name__ == '__main__':
@@ -68,6 +68,15 @@ return its level order traversal as:
   [9,20],
   [15,7]
 ]
+
+# 25 APR, 2019
+        res = []
+        tmp = [root]
+        while tmp and root:
+            res.append([i.val for i in tmp])
+            ir = [[i.left,i.right] for i in tmp]
+            tmp = [leaf for i in ir for leaf in i if leaf]
+        return res
 
 # 30 DEC
         res,tmp = [], [root]

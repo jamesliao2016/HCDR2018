@@ -14,16 +14,18 @@ class Solution:
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        res,tmp = [],[root]
-        cnt=0
+        res = []
+        tmp = [root]
+        cnt = 0
         while tmp and root:
-            if cnt%2==0:
-                res.append([i.val for i in tmp])
+            if cnt % 2 == 0:
+                tmp0 = [i.val for i in tmp]
             else:
-                res.append([i.val for i in tmp][::-1])
-            cnt += 1
-            ir = [[i.left,i.right] for i in tmp]
-            tmp = [leaf for i in ir for leaf in i if leaf]
+                tmp0 = [i.val for i in tmp][::-1]
+            res.append(tmp0)
+            lr = [[i.left, i.right] for i in tmp]
+            tmp = [i for leaf in lr for i in leaf if i]
+            cnt+=1
         return res
 
 
@@ -55,7 +57,8 @@ if __name__ == '__main__':
     y_output = Solution()
     print(Solution().zigzagLevelOrder(x_test))
 '''
-Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
+Given a binary tree, return the zigzag level order traversal of its nodes' values. 
+(ie, from left to right, then right to left for the next level and alternate between).
 
 For example:
 Given binary tree [3,9,20,null,null,15,7],
@@ -70,6 +73,19 @@ return its zigzag level order traversal as:
   [20,9],
   [15,7]
 ]
+
+# 28 APR, 2019
+        res,tmp = [],[root]
+        cnt=0
+        while tmp and root:
+            if cnt%2==0:
+                res.append([i.val for i in tmp])
+            else:
+                res.append([i.val for i in tmp][::-1])
+            cnt += 1
+            ir = [[i.left,i.right] for i in tmp]
+            tmp = [leaf for i in ir for leaf in i if leaf]
+        return res
 
 # 12 dec
 
