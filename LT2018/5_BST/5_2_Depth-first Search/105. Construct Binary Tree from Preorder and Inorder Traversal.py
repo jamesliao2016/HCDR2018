@@ -17,10 +17,10 @@ class Solution:
         """
         while inorder:
             idx = inorder.index(preorder.pop(0))
-            root = TreeNode(inorder[idx])
-            root.left = self.buildTree(preorder,inorder[:idx])
-            root.right = self.buildTree(preorder,inorder[idx+1:])
-            return root
+            res = TreeNode(inorder[idx])
+            res.left = self.buildTree(preorder,inorder[:idx])
+            res.right = self.buildTree(preorder, inorder[idx+1:])
+        return res
 
 if __name__ == '__main__':
     preorder = [3, 9, 20, 15, 7]
@@ -52,6 +52,14 @@ Return the following binary tree:
   9  20
     /  \
    15   7
+
+# 30 APR, 2019
+        while inorder:
+            idx = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[idx])
+            root.left = self.buildTree(preorder,inorder[:idx])
+            root.right = self.buildTree(preorder,inorder[idx+1:])
+            return root
 
 # dec 29
 
