@@ -19,6 +19,7 @@ if __name__ == '__main__':
     print(Solution().longestSubstring(s,k))
 
     '''
+    
     Find the length of the longest substring T of a given string 
     (consists of lowercase letters only) such that every character in T appears no less than k times.
 
@@ -40,6 +41,12 @@ Output:
 5
 
 The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+
+# 5 may, 2019
+        for i in set(s):
+            if s.count(i)<k:
+                return max([self.longestSubstring(tmp,k) for tmp in s.split(i)])
+        return len(s)
 
 # 16 apr, 2019
         for i in set(s):
