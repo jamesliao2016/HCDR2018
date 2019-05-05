@@ -97,7 +97,7 @@ if __name__ == '__main__':
     from wordcloud import WordCloud, ImageColorGenerator
 
     # 初始化图片
-    image = Image.open('/Users/liaopeng3/code_lib/HCDR2018/Misc/Flask2018/weibo0204/static/images/personas.jpg')
+    image = Image.open('/Users/liaopeng3/code_lib/HCDR2018/miscellaneous/Flask2018/weibo0204/static/images/personas.jpg')
     graph = np.array(image)
 
     # 生成云图，这里需要注意的是WordCloud默认不支持中文，所以这里需要加载中文黑体字库
