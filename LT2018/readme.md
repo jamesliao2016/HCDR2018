@@ -7,33 +7,27 @@ Every problem is solved with answers.
 
 Following is the 2-week plan to finish the most interviewed problems, you can finish in 14 days.
 
-Day 1.	78	207	198
+Day 1.	78, 	207, 	198 
 
-Day 2.	102	329	3
+Day 2.	102, 	329, 	3 
 
-Day 3.	103	215	380
+Day 3.	103, 	215, 	380, 
 
-Day 4.	279	315	19
+Day 4.	279, 	315, 	19, 
 
-Day 5.	98	5	21
+Day 5.	98, 	5, 	21, 
 
-Day 6.	101	62	141
+Day 6.	101, 	62, 	141, 
 
-Day 7.	105	300	148
+Day 7.	105, 	300, 	148, 
 
-Day 8.	206	116	
-
-Day 9.	237	230	
-
-Day 10.	328	15	
-
-Day 11.	56	26	
-
-Day 12.	14	334	
-
-Day 13.	395	128	
-
-Day 14.	94	200	
+Day 8.	206, 	116, 	
+Day 9.	237, 	230, 	
+Day 10.	328, 	15, 	
+Day 11.	56, 	26, 	
+Day 12.	14, 	334, 	
+Day 13.	395, 	128, 	
+Day 14.	94, 	200, 	
 
 ## My favorite list:
 
