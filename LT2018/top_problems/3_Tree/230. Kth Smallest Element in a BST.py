@@ -15,15 +15,15 @@ class Solution:
         :rtype: int
         """
         stack = []
-        while stack or root:
+        while root or stack:
             while root:
                 stack.append(root)
                 root = root.left
-            k-=1
-            root = stack.pop()
-            if k<1:
-                return root.val
-            root = root.right
+            tmp = stack.pop()
+            k -= 1
+            if k < 1:
+                return tmp.val
+            root = tmp.right
 
 
 if __name__ == '__main__':
@@ -63,6 +63,18 @@ Output: 3
 Follow up:
 What if the 5_BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
 How would you optimize the kthSmallest routine?
+
+# 7 may, 2019
+        stack = []
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            k-=1
+            root = stack.pop()
+            if k<1:
+                return root.val
+            root = root.right
 
 # 9 apr, 2019
         stack = []
