@@ -9,23 +9,23 @@ class Solution:
         for i in range(len(nums)-2):
             if i and nums[i]==nums[i-1]:
                 continue
-            l,r = i+1, len(nums) - 1
+            l,r = i+1,len(nums)-1
             while l<r:
-                if nums[i] + nums[l] + nums[r]>0:
+                if nums[i] + nums[l] + nums[r] > 0:
                     r-=1
                     continue
                 if nums[i] + nums[l] + nums[r] < 0:
-                    l+=1
+                    l += 1
                     continue
                 if nums[i] + nums[l] + nums[r] == 0:
-                    res.append([nums[i],nums[l],nums[r]])
+                    res.append([nums[i], nums[l], nums[r]])
                     while l<r and nums[l]==nums[l+1]:
-                        l += 1
-                    while l < r and nums[r] == nums[r-1]:
-                        r -= 1
-                    # continue
+                        l+=1
+                    while l<r and nums[r]==nums[r-1]:
+                        r-=1
                 l+=1;r-=1
         return res
+
 
 
 if __name__ == '__main__':
@@ -52,7 +52,31 @@ A solution set is:
   [-1, -1, 2]
 ]
 
-    dec 24
+# 8 may, 2019
+        res = []
+        nums.sort()
+        for i in range(len(nums)-2):
+            if i and nums[i]==nums[i-1]:
+                continue
+            l,r = i+1, len(nums) - 1
+            while l<r:
+                if nums[i] + nums[l] + nums[r]>0:
+                    r-=1
+                    continue
+                if nums[i] + nums[l] + nums[r] < 0:
+                    l+=1
+                    continue
+                if nums[i] + nums[l] + nums[r] == 0:
+                    res.append([nums[i],nums[l],nums[r]])
+                    while l<r and nums[l]==nums[l+1]:
+                        l += 1
+                    while l < r and nums[r] == nums[r-1]:
+                        r -= 1
+                    # continue
+                l+=1;r-=1
+        return res
+
+    # dec 24
     
             res = []
         nums.sort()
