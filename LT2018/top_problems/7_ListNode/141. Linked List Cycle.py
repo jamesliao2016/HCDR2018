@@ -13,6 +13,19 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        if not head:
+            return False
+        s,f = head,head.next
+        while s and f:
+            if s == f:
+                return True
+            if not s.next or not f.next:
+                break
+            s = s.next
+            f = f.next.next
+        return False
+
+
 
 if __name__ == '__main__':
     l1=ListNode(3)
