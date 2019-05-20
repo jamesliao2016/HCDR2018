@@ -7,11 +7,11 @@ class Solution:
         :type strs: List[str]
         :rtype: str
         """
-        tmp = zip(*strs)
         res = ''
+        tmp = zip(*strs)
         for i in tmp:
             if len(set(i))==1:
-                res+=i[0]
+                res = res + i[0]
             else:
                 break
         return res
@@ -37,4 +37,15 @@ Explanation: There is no common prefix among the input strings.
 Note:
 
 All given inputs are in lowercase letters a-z.
+
+# 20 MAY, 2019
+        tmp = zip(*strs)
+        res = ''
+        for i in tmp:
+            if len(set(i))==1:
+                res+=i[0]
+            else:
+                break
+        return res
+
     '''

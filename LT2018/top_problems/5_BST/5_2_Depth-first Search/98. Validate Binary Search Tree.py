@@ -9,18 +9,20 @@ class TreeNode:
         self.right = None
 
 class Solution:
-    def isValidBST(self, root, smallerThan=float('inf'), largerThan=float('-inf')):
+    def isValidBST(self, root):
         """
         :type root: TreeNode
         :rtype: bool
         """
-        if not root:
-            return True
-        if root.val <= largerThan or root.val >= smallerThan:
-            return False
-        else:
-            return self.isValidBST(root.left,root.val,largerThan) and \
-        self.isValidBST(root.right,smallerThan,root.val)
+        def aux(root,u = float('inf'),l = float('-inf')):
+            if not root:
+                return True
+            if root.val >= u or root.val <= l:
+                return False
+            else:
+                return aux(root.left,root.val,l) and aux(root.right,u,root.val)
+
+        return aux(root,float('inf'),float('-inf'))
 
 if __name__ == '__main__':
     # data_input = [1,2,2,3,4,4,3]
@@ -90,6 +92,20 @@ Example 2:
 Output: false
 Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
              is 5 but its right child's value is 4.
+
+# 20 may, 2019
+    def isValidBST(self, root, smallerThan=float('inf'), largerThan=float('-inf')):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+        if root.val <= largerThan or root.val >= smallerThan:
+            return False
+        else:
+            return self.isValidBST(root.left,root.val,largerThan) and \
+        self.isValidBST(root.right,smallerThan,root.val)
              
              # dec 29
              
