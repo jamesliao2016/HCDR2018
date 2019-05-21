@@ -12,16 +12,16 @@ class Solution:
         res = 0
         lst = [n]
         while lst:
-            tmp = []
             res += 1
+            tmp = []
             for i in lst:
                 j = 1
                 while j*j<=i:
                     if j*j == i:
                         return res
-                    tmp.append((i-j*j))
+                    tmp.append(i - j*j)
                     j += 1
-            lst = tmp
+            lst = set(tmp)
 
 
 if __name__ == '__main__':
@@ -43,6 +43,23 @@ Example 2:
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
+
+# 21 may, 2019
+        if not n:
+            return 0
+        res = 0
+        lst = [n]
+        while lst:
+            tmp = []
+            res += 1
+            for i in lst:
+                j = 1
+                while j*j<=i:
+                    if j*j == i:
+                        return res
+                    tmp.append((i-j*j))
+                    j += 1
+            lst = tmp
 
 # 24 apr, 2019
         res = 0
