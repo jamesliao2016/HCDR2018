@@ -20,8 +20,8 @@ class Solution:
                 stack.append(root)
                 root = root.left
             tmp = stack.pop()
-            k -= 1
-            if k < 1:
+            k-=1
+            if k<1:
                 return tmp.val
             root = tmp.right
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
 
 Note: 
-You may assume k is always valid, 1 ≤ k ≤ 5_BST's total elements.
+You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
 
 Example 1:
 
@@ -63,6 +63,18 @@ Output: 3
 Follow up:
 What if the 5_BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
 How would you optimize the kthSmallest routine?
+
+# 24 MAY, 2019
+        stack = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            tmp = stack.pop()
+            k -= 1
+            if k < 1:
+                return tmp.val
+            root = tmp.right
 
 # 7 may, 2019
         stack = []
