@@ -5,6 +5,60 @@ class Solution:
         :rtype: List[List[int]]
         """
         res = []
+        if not nums or len(nums)<3:
+            return res
+        nums.sort()
+
+        for idx in range(len(nums)-2):
+            if idx and nums[idx] == nums[idx-1]:
+                continue
+            l, r = idx+1, len(nums) - 1
+            while l<r:
+                if nums[idx] + nums[l] + nums[r] > 0:
+                    r -= 1
+                    continue
+                if nums[idx] + nums[l] + nums[r] < 0:
+                    l += 1
+                    continue
+
+                if nums[idx] + nums[l] + nums[r] == 0:
+                    res.append([nums[idx], nums[l], nums[r]])
+                    while l<r and nums[r]==nums[r-1]:
+                        r-=1
+                    while l< r and nums[l] == nums[l+1]:
+                        l += 1
+                l+=1;r-=1
+        return res
+
+
+
+if __name__ == '__main__':
+    y = Solution()
+    h0 = [-1, 0, 1, 2, -1, -4]
+    # h0= [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
+    # h0=[3,-2,1,0]
+    print(y.threeSum(h0))
+
+    '''
+    Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? 
+    Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+
+The solution set must not contain duplicate triplets.
+
+Example:
+
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+
+# 27 may, 2019
+        res = []
         nums.sort()
         for i in range(len(nums)-2):
             if i and nums[i]==nums[i-1]:
@@ -26,31 +80,6 @@ class Solution:
                 l+=1;r-=1
         return res
 
-
-
-if __name__ == '__main__':
-    y = Solution()
-    h0 = [-1, 0, 1, 2, -1, -4]
-    # h0= [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
-    # h0=[3,-2,1,0]
-    print(y.threeSum(h0))
-
-    '''
-    Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
-
-Note:
-
-The solution set must not contain duplicate triplets.
-
-Example:
-
-Given array nums = [-1, 0, 1, 2, -1, -4],
-
-A solution set is:
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]
 
 # 8 may, 2019
         res = []
