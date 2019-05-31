@@ -15,16 +15,14 @@ class Solution(object):
         """
         if not head:
             return False
-        s,f = head,head.next
-        while s and f:
-            if s == f:
+        slow,fast = head,head.next
+        while fast and fast.next:
+            if slow == fast:
                 return True
-            if not s.next or not f.next:
-                break
-            s = s.next
-            f = f.next.next
+            else:
+                fast = fast.next.next
+                slow = slow.next
         return False
-
 
 
 if __name__ == '__main__':
@@ -67,6 +65,19 @@ Explanation: There is no cycle in the linked list.
 Follow up:
 
 Can you solve it using O(1) (i.e. constant) memory?
+
+# 30 may, 2019
+        if not head:
+            return False
+        s,f = head,head.next
+        while s and f:
+            if s == f:
+                return True
+            if not s.next or not f.next:
+                break
+            s = s.next
+            f = f.next.next
+        return False
 
 DEC 31
         try:

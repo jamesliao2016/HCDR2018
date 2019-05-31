@@ -7,8 +7,9 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
-        from collections import Counter
-        return [i for i,j in Counter().most_common(nums,k)]
+        import collections
+        tmp = collections.Counter(nums).most_common(k)
+        return [i for i,j in tmp]
 
 if __name__ == '__main__':
 
@@ -27,6 +28,10 @@ Note:
 
 You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
 Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+
+# 30 may, 2019
+        from collections import Counter
+        return [i for i,j in Counter().most_common(nums,k)]
 
 # 22 APR, 2019
         from collections import Counter

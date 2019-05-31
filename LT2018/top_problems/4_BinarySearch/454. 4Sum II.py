@@ -9,18 +9,19 @@ class Solution:
         :type D: List[int]
         :rtype: int
         """
-        tmp_dict = {}
         res = 0
+        dict_sum = {}
         for i in A:
             for j in B:
-                if (i+j) not in tmp_dict:
-                    tmp_dict[(i+j)] = 1
+                if (i+j) in dict_sum:
+                    dict_sum[(i+j)]+=1
                 else:
-                    tmp_dict[(i + j)] += 1
+                    dict_sum[(i+j)] = 1
         for i in C:
             for j in D:
-                if -(i+j) in tmp_dict:
-                    res += tmp_dict[-(i+j)]
+                tmp = -(i+j)
+                if tmp in dict_sum:
+                    res += dict_sum[tmp]
         return res
 
 
@@ -53,6 +54,37 @@ Explanation:
 The two tuples are:
 1. (0, 0, 0, 1) -> A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0
 2. (1, 1, 0, 0) -> A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0
+
+# 31 may, 2019
+        res = 0
+        tmp_dict = {}
+        for i in A:
+            for j in B:
+                if (i+j) in tmp_dict:
+                    tmp_dict[(i+j)]+=1
+                else:
+                    tmp_dict[(i + j)] = 1
+        for i in C:
+            for j in D:
+                if (-(i+j)) in tmp_dict:
+                    res += tmp_dict[(-(i+j))]
+        return res
+
+
+# 29 may, 2019
+        tmp_dict = {}
+        res = 0
+        for i in A:
+            for j in B:
+                if (i+j) not in tmp_dict:
+                    tmp_dict[(i+j)] = 1
+                else:
+                    tmp_dict[(i + j)] += 1
+        for i in C:
+            for j in D:
+                if -(i+j) in tmp_dict:
+                    res += tmp_dict[-(i+j)]
+        return res
 
 # 28 MAR, 2019
 
