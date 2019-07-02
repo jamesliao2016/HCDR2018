@@ -10,17 +10,16 @@ class Solution:
         if not nums:
             return 0
         nums.sort()
-        res = 1
-        tmp = 1
+        res = 0
+        tmp_res = 1
         for i in range(1,len(nums)):
-            if nums[i]!=nums[i-1]:
-                if nums[i]==nums[i-1]+1:
-                    tmp +=1
+            if nums[i-1] != nums[i]:
+                if nums[i] == nums[i-1]+1:
+                    tmp_res += 1
                 else:
-                    tmp = 1
-                res = max(res,tmp)
-        return res
-
+                    res = max(res,tmp_res)
+                    tmp_res = 1
+        return max(res,tmp_res)
 
 if __name__ == '__main__':
     # ipt = [100, 4, 200, 1, 3, 2]
@@ -29,7 +28,8 @@ if __name__ == '__main__':
 
 
     '''
-    Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+    Given an unsorted array of integers, find the length of the longest 
+    consecutive elements sequence.
 
 Your algorithm should run in O(n) complexity.
 
@@ -45,6 +45,20 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
 
 
 
+# 2 july, 2019
+        if not nums:
+            return 0
+        nums.sort()
+        res = 1
+        tmp = 1
+        for i in range(1,len(nums)):
+            if nums[i]!=nums[i-1]:
+                if nums[i]==nums[i-1]+1:
+                    tmp +=1
+                else:
+                    tmp = 1
+                res = max(res,tmp)
+        return res
 
 13 feb, 2019
         res = 0
