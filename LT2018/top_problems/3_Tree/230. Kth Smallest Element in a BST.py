@@ -20,18 +20,30 @@ class Solution:
                 stack.append(root)
                 root = root.left
             tmp = stack.pop()
-            k-=1
-            if k<1:
+            k -= 1
+            if k == 0:
                 return tmp.val
-            root = tmp.right
+            if tmp.right:
+                stack.append(tmp.right)
+
 
 
 if __name__ == '__main__':
-    dt_input = TreeNode(3)
-    dt_input.right = TreeNode(4)
-    dt_input.left = TreeNode(1)
-    dt_input.left.right = TreeNode(2)
-    k=1
+# eg1
+#     dt_input = TreeNode(3)
+#     dt_input.right = TreeNode(4)
+#     dt_input.left = TreeNode(1)
+#     dt_input.left.right = TreeNode(2)
+#     k=1
+# eg2
+    dt_input = TreeNode(5)
+    dt_input.right = TreeNode(6)
+    dt_input.left = TreeNode(3)
+    dt_input.left.right = TreeNode(4)
+    dt_input.left.left = TreeNode(2)
+    dt_input.left.left.left = TreeNode(1)
+    k=3
+
     print(Solution().kthSmallest(dt_input,k))
 
 '''
@@ -63,6 +75,19 @@ Output: 3
 Follow up:
 What if the 5_BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
 How would you optimize the kthSmallest routine?
+
+# 3 july, 2019
+        stack = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            tmp = stack.pop()
+            k-=1
+            if k<1:
+                return tmp.val
+            root = tmp.right
+
 
 # 24 MAY, 2019
         stack = []

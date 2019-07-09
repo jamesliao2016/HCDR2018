@@ -8,10 +8,11 @@ class Solution:
         :rtype: str
         """
         res = ''
-        tmp = zip(*strs)
+        tmp = list(zip(*strs))
+        lenstr = len(tmp[0])
         for i in tmp:
             if len(set(i))==1:
-                res = res + i[0]
+                res += i[0]
             else:
                 break
         return res
@@ -37,6 +38,16 @@ Explanation: There is no common prefix among the input strings.
 Note:
 
 All given inputs are in lowercase letters a-z.
+
+# 9 july, 2019
+        res = ''
+        tmp = zip(*strs)
+        for i in tmp:
+            if len(set(i))==1:
+                res = res + i[0]
+            else:
+                break
+        return res
 
 # 20 MAY, 2019
         tmp = zip(*strs)
