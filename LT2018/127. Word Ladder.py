@@ -1,19 +1,22 @@
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
         import collections
-        queue = collections.deque([[beginWord,1]])
+        queue = collections.deque([[beginWord, 1]])
         wordList = set(wordList)
+
         while queue:
             word, dist = queue.popleft()
             if word == endWord:
                 return dist
             for i in range(len(word)):
-                for c in 'abcdefghijklmnopqrstuvwxyz':
-                    tmp = word[:i] + c + word[i+1:]
+                for j in 'abcdefghijklmnopqrstuvwxyz':
+                    tmp = word[:i] + j + word[i + 1:]
+
                     if tmp in wordList:
                         wordList.remove(tmp)
-                        queue.append([tmp,dist+1])
+                        queue.append([tmp, dist + 1])
         return 0
+
 
 if __name__ == '__main__':
     beginWord = "hit",
@@ -53,6 +56,23 @@ wordList = ["hot","dot","dog","lot","log"]
 Output: 0
 
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+
+# 10 july, 2019
+        import collections
+        queue = collections.deque([[beginWord,1]])
+        wordList = set(wordList)
+        while queue:
+            word, dist = queue.popleft()
+            if word == endWord:
+                return dist
+            for i in range(len(word)):
+                for c in 'abcdefghijklmnopqrstuvwxyz':
+                    tmp = word[:i] + c + word[i+1:]
+                    if tmp in wordList:
+                        wordList.remove(tmp)
+                        queue.append([tmp,dist+1])
+        return 0
+
 
 # 9 july, 2019
 

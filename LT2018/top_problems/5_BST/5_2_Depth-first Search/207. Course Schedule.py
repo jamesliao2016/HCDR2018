@@ -7,23 +7,22 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
-        lst_take = [0]*numCourses
-        lst_pre = [[] for i in range(numCourses)]
-        for i in prerequisites:
-            idx = i[0]
-            lst_tmp = i[1:]
-            lst_pre[idx] = lst_pre[idx] + lst_tmp
+        lst_taking = [0]*numCourses
+        lst_pre = [[] for _ in range(numCourses)]
+        for tmp in prerequisites:
+            idx = tmp[0]
+            lst_pre[idx] = lst_pre[idx]+tmp[1:]
 
         def dfs(i):
-            if lst_take[i]==-1:
+            if lst_taking[i] == -1:
                 return False
-            if lst_take[i] == 1:
+            if lst_taking[i] == 1:
                 return True
-            lst_take[i] = -1
+            lst_taking[i]=-1
             for j in lst_pre[i]:
                 if not dfs(j):
                     return False
-            lst_take[i]=1
+            lst_taking[i] = 1
             return True
 
         for i in range(numCourses):
@@ -69,6 +68,31 @@ Note:
 
 The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
 You may assume that there are no duplicate edges in the input prerequisites.
+
+# 10 july, 2019
+        lst_take = [0]*numCourses
+        lst_pre = [[] for i in range(numCourses)]
+        for i in prerequisites:
+            idx = i[0]
+            lst_tmp = i[1:]
+            lst_pre[idx] = lst_pre[idx] + lst_tmp
+
+        def dfs(i):
+            if lst_take[i]==-1:
+                return False
+            if lst_take[i] == 1:
+                return True
+            lst_take[i] = -1
+            for j in lst_pre[i]:
+                if not dfs(j):
+                    return False
+            lst_take[i]=1
+            return True
+
+        for i in range(numCourses):
+            if not dfs(i):
+                return False
+        return True
 
 # 1 apr, 2019
         taking = [0]*numCourses

@@ -12,15 +12,21 @@ class Solution:
         :type intervals: List[Interval]
         :rtype: List[Interval]
         """
-        val = sorted(intervals,key= lambda x: x.start)
+        if not intervals:
+            return []
+        val = sorted(intervals,key= lambda x: x[0])
         res = []
         res.append(val[0])
         for i in val:
-            if i.start <= res[-1].end:
-                res[-1].end = max(res[-1].end,i.end)
+            if i[0] <= res[-1][1]:
+                res[-1][1] = max(i[1],res[-1][1])
+                res[-1][0] = min(res[-1][0],i[0])
             else:
                 res.append(i)
         return res
+
+
+
 
 
 if __name__ == '__main__':
@@ -47,6 +53,17 @@ Example 2:
 Input: [[1,4],[4,5]]
 Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+# 11 july, 2019
+        val = sorted(intervals,key= lambda x: x.start)
+        res = []
+        res.append(val[0])
+        for i in val:
+            if i.start <= res[-1].end:
+                res[-1].end = max(res[-1].end,i.end)
+            else:
+                res.append(i)
+        return res
 
 # 19 apr, 2019
         # return intervals.sort(lambda x: x.key=)
