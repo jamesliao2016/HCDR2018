@@ -58,6 +58,24 @@ board are not flipped to 'X'. Any 'O' that is not on the border and it is not co
 an 'O' on the border will be flipped to 'X'. Two cells are connected if they are adjacent 
 cells connected horizontally or vertically.
 
+# 1 MAR, 2020
+        if not any(board):
+            return
+        len_x,len_y = len(board), len(board[0])
+        tmp_save = []
+        for val_x in [0, len_x-1]:
+            for val_y in [0,len_y-1]:
+                tmp_save += [[val_x,tmp_j] for tmp_j in range(len_y)]
+                tmp_save += [[tmp_i,val_y] for tmp_i in range(len_x)]
+                
+        while tmp_save:
+            tmp_i,tmp_j = tmp_save.pop()
+            if 0<=tmp_i<len_x and 0<=tmp_j<len_y and board[tmp_i][tmp_j] == "O":
+                board[tmp_i][tmp_j] = "S"
+                tmp_save += [tmp_i,tmp_j-1], [tmp_i,tmp_j+1],[tmp_i-1,tmp_j],[tmp_i+1,tmp_j]
+        
+        board[:] = [["XO"[val_x=="S"] for val_x in val_y] for val_y in board]
+
 # 9 july 2019
         if not any(board):
             return
