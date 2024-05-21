@@ -52,3 +52,84 @@ Leetcode solutions
 7. 学习和参考开源项目：在学习的过程中，你可以参考一些开源的目标检测Android应用项目，了解它们的实现方式和优化策略。这些项目可以帮助你更快地掌握目标检测在Android应用中的实际应用。
 
 总之，从0开始学习安卓的目标检测开发需要耐心和持续的努力。通过不断地学习和实践，你可以逐渐掌握这个领域的知识和技能，并开发出优秀的目标检测Android应用。
+
+
+
+从零开始学习安卓目标检测开发需要以下几个步骤:
+
+## 准备工作
+
+1. 掌握Java或Kotlin编程语言基础。
+2. 安装Android Studio开发环境。
+3. 了解Android应用程序的基本架构和组件。
+
+## 选择目标检测模型
+
+1. 常用的目标检测模型有YOLO系列、SSD、Faster R-CNN等。
+2. 可以选择在线预训练模型,如YOLO v5、YOLO v8等,也可以自己训练模型。[1]
+
+## 模型转换和优化
+
+1. 将训练好的模型转换为ONNX或TensorFlow Lite格式,方便部署到移动端。
+2. 使用TensorFlow Lite模型优化工具对模型进行优化,减小模型大小,提高推理速度。[2][3]
+
+## 集成到Android应用
+
+1. 在Android Studio中创建新项目。
+2. 添加必要的依赖库,如TensorFlow Lite、OpenCV等。
+3. 编写Java/Kotlin代码加载模型、预处理输入数据、执行推理、后处理输出结果。
+4. 设计UI界面,集成相机功能,显示目标检测结果。[4]
+
+## 测试和优化
+
+1. 在真机或模拟器上测试应用性能。
+2. 根据测试结果优化模型、代码、UI等,提升应用体验。[5]
+
+总的来说,需要掌握Android开发基础、深度学习模型部署等知识。官方示例代码和教程可以作为入门参考。[1][4]
+
+Citations:
+[1] https://www.cnblogs.com/cxl11/articles/15750274.html
+[2] https://blog.csdn.net/weixin_31588979/article/details/123770162
+[3] https://juejin.cn/post/6986504514752741384
+[4] https://www.paddlepaddle.org.cn/lite/v2.11/demo_guides/android_app_demo.html
+[5] https://blog.csdn.net/m0_65157297/article/details/133586307
+
+
+从零开始学习iPhone目标检测开发需要以下几个步骤:
+
+## 掌握基础知识
+
+1. 学习Swift或Objective-C编程语言,了解iOS应用程序架构。[4]
+2. 熟悉iOS开发工具Xcode的使用。
+3. 了解计算机视觉和深度学习基础知识,如卷积神经网络、目标检测算法等。
+
+## 选择目标检测模型
+
+1. 常用的目标检测模型有YOLO系列、SSD、Faster R-CNN等。
+2. 可以使用预训练模型,如YOLO v5、YOLO v8等,也可以自行训练模型。[1][5]
+
+## 模型转换和优化
+
+1. 将训练好的模型转换为Core ML格式,以便在iOS设备上运行。
+2. 使用Core ML工具对模型进行优化,减小模型大小,提高推理速度。[2]
+
+## 集成到iOS应用
+
+1. 在Xcode中创建新项目。
+2. 添加必要的依赖库,如Vision、Core ML等。
+3. 编写Swift/ObjC代码加载模型、预处理输入图像、执行推理、后处理输出结果。
+4. 设计UI界面,集成相机功能,显示目标检测结果。[1][3]
+
+## 测试和优化
+
+1. 在模拟器或真机上测试应用性能。 
+2. 根据测试结果优化模型、代码、UI等,提升应用体验。[1]
+
+总的来说,需要掌握iOS开发、计算机视觉、深度学习等知识。官方示例代码和教程可以作为入门参考。[1][3][5]
+
+Citations:
+[1] https://cloud.tencent.com/developer/article/1060581
+[2] https://cloud.tencent.com/developer/article/1109216
+[3] https://www.paddlepaddle.org.cn/lite/v2.9/demo_guides/ios_app_demo.html
+[4] https://blog.csdn.net/qq_36285879/article/details/89309975
+[5] https://juejin.cn/post/7370876224320618535
