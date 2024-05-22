@@ -7,7 +7,7 @@ kaggle liaopeng3$ kaggle competitions download -c ga-customer-revenue-prediction
 Leetcode solutions
 
 
-从0开始学习iPhone的目标检测开发是一个涉及多个步骤和领域知识的过程。以下是一个建议的学习路径：
+# 从0开始学习iPhone的目标检测开发是一个涉及多个步骤和领域知识的过程。以下是一个建议的学习路径：
 
 1. **学习Swift或Objective-C**：
    - iPhone应用开发主要使用Swift或Objective-C这两种编程语言。Swift是较新的语言，更现代、更易读且更强大。作为初学者，可以从Swift开始学习。
@@ -55,7 +55,7 @@ Leetcode solutions
 
 
 
-从零开始学习安卓目标检测开发需要以下几个步骤:
+# 从零开始学习安卓目标检测开发需要以下几个步骤:
 
 ## 准备工作
 
@@ -95,7 +95,7 @@ Citations:
 [5] https://blog.csdn.net/m0_65157297/article/details/133586307
 
 
-从零开始学习iPhone目标检测开发需要以下几个步骤:
+# 从零开始学习iPhone目标检测开发需要以下几个步骤:
 
 ## 掌握基础知识
 
@@ -133,3 +133,84 @@ Citations:
 [3] https://www.paddlepaddle.org.cn/lite/v2.9/demo_guides/ios_app_demo.html
 [4] https://blog.csdn.net/qq_36285879/article/details/89309975
 [5] https://juejin.cn/post/7370876224320618535
+
+
+# 将训练好的YOLO模型部署到iOS应用程序需要以下几个步骤:
+
+## 1. 将YOLO模型转换为CoreML格式
+
+CoreML是苹果公司推出的机器学习框架,可以在iOS设备上高效运行。我们需要将训练好的YOLO模型转换为CoreML支持的格式。常用的转换方法包括:
+
+1) 使用coremltools工具将Keras格式的YOLO模型转换为CoreML格式[1]
+2) 使用ncnn2coreml工具将ncnn格式的YOLO模型转换为CoreML格式[2]
+3) 使用第三方工具如Pytorch2CoreML将PyTorch格式的YOLO模型转换为CoreML格式[5]
+
+## 2. 在Xcode中创建iOS应用程序
+
+使用Xcode创建一个新的iOS应用程序项目,并将转换后的CoreML模型文件导入项目中。[1][4]
+
+## 3. 使用Vision框架加载和运行CoreML模型
+
+在iOS应用程序中,使用Vision框架提供的API加载CoreML模型,并对输入图像进行预测:
+
+1) 创建VNCoreMLRequest对象,加载CoreML模型
+2) 创建VNCoreMLModel对象 
+3) 创建请求处理器VNCoreMLRequest
+4) 使用VNImageRequestHandler对输入图像进行预测
+5) 获取预测结果,解析出检测到的目标位置和类别信息[1][3][4]
+
+## 4. 处理预测结果并显示
+
+根据YOLO模型的输出,在iOS应用的UI上绘制出检测结果,通常使用矩形框勾勒出目标位置,并标注类别名称。[1][3]
+
+总的来说,将YOLO模型部署到iOS设备需要先将模型转换为CoreML格式,然后在iOS应用中使用Vision框架加载和运行模型进行目标检测。这个过程需要一定的iOS开发经验。
+
+Citations:
+[1] https://juejin.cn/post/6844903481543753735
+[2] https://docs.ultralytics.com/zh/hub/app/ios/
+[3] https://swift.gg/2018/10/29/object-detection-with-yolo/
+[4] https://cloud.tencent.com/developer/article/1109216
+[5] https://blog.csdn.net/xiqi4145/article/details/115273246
+
+
+# 将训练好的YOLOv5模型集成到Android应用中,主要有以下几个步骤:
+
+## 1. 将YOLOv5模型转换为NCNN或TensorFlow Lite格式
+
+NCNN和TensorFlow Lite都是移动端常用的模型格式,可以高效运行在Android设备上。我们需要先将训练好的YOLOv5模型转换为这两种格式之一:
+
+1) 使用ncnn工具将YOLOv5 PyTorch模型转换为NCNN格式[1]
+2) 使用tf2tflite工具将YOLOv5 PyTorch模型转换为TensorFlow Lite格式[2]
+
+## 2. 在Android Studio中创建Android应用程序项目
+
+使用Android Studio创建一个新的Android应用程序项目,并将转换后的NCNN或TensorFlow Lite模型文件导入项目中。[1][4]
+
+## 3. 使用NCNN或TensorFlow Lite API加载和运行模型
+
+在Android应用程序中,使用NCNN或TensorFlow Lite提供的API加载模型,并对输入图像进行预测:
+
+- NCNN方式:
+1) 创建NCNN::Net对象,加载NCNN模型文件
+2) 创建NCNN::Mat对象,存储输入图像数据 
+3) 使用NCNN::Net运行模型推理
+4) 获取模型输出,解析出检测到的目标位置和类别信息[1][3]
+
+- TensorFlow Lite方式:  
+1) 创建Interpreter对象,加载TensorFlow Lite模型
+2) 创建TensorImage对象,存储输入图像数据
+3) 使用Interpreter运行模型推理
+4) 获取模型输出,解析出检测到的目标位置和类别信息[2][4]
+
+## 4. 处理预测结果并显示
+
+根据YOLOv5模型的输出,在Android应用的UI上绘制出检测结果,通常使用矩形框勾勒出目标位置,并标注类别名称。[1][4]
+
+总的来说,将YOLOv5模型部署到Android设备需要先将模型转换为NCNN或TensorFlow Lite格式,然后在Android应用中使用相应的API加载和运行模型进行目标检测。这个过程需要一定的Android开发经验。
+
+Citations:
+[1] https://blog.csdn.net/wjb6688/article/details/108309801
+[2] https://cloud.baidu.com/article/3251665
+[3] https://cloud.tencent.com/developer/article/2221015
+[4] https://blog.csdn.net/wjb6688/article/details/108181953
+[5] https://www.cnblogs.com/wxkang/p/17810435.html
